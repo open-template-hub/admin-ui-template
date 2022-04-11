@@ -1,0 +1,94 @@
+<div [class.side-nav-closed]="sideNavClosed === 'true'" class="side-nav-wrapper">
+  <nav class="side-nav">
+    <a (click)="toggleSideNav()" class="brand" href="javascript:void(0)">
+      <img [src]="BRAND.logo.main" alt="logo" class="brand-logo" width="40"/>
+      <h2 class="side-nav-brand-text">Open Template Hub</h2>
+    </a>
+    <a *ngIf="currentUser" [routerLink]="URLS.dashboard.myProfile">
+      <img [class.premium-border]="userIsPremium" [src]="profileImg" alt="profile img"
+           class="profile-img-small yellow-theme"/>
+      <span *ngIf="sideNavClosed === 'false'">
+        My Profile
+    </span>
+    </a>
+    <a *ngIf="currentUser" [routerLink]="URLS.dashboard.root">
+      <i [class]="'fas fa-clipboard-list fa-fw fa-lg'" aria-hidden="true"></i>
+      <span *ngIf="sideNavClosed === 'false'">
+        Dashboard
+    </span>
+    </a>
+    <a *ngIf="currentUser" [routerLink]="URLS.dashboard.notifications">
+      <div class="notifications" *ngIf="notifications.length > 0" [class.smaller-font]="notifications.length > 9">
+        {{ notifications.length > 9 ? '9+' : notifications.length }}
+      </div>
+      <i [class]="'fas fa-bell fa-fw fa-lg'" aria-hidden="true"></i>
+      <span *ngIf="sideNavClosed === 'false'">
+        Notifications
+    </span>
+    </a>
+    <a [routerLink]="URLS.dashboard.premium" *ngIf="currentUser">
+      <i [class]="'fas fa-star fa-fw fa-lg yellow-theme'" aria-hidden="true" style="color: var(--theme-color)"></i>
+      <span *ngIf="sideNavClosed === 'false'">
+        Premium
+      </span>
+    </a>
+    <a (click)="settingsOpened = !settingsOpened" *ngIf="currentUser" href="javascript:void(0)">
+      <i [class]="'fas fa-cog fa-fw fa-lg'" aria-hidden="true"></i>
+      <span *ngIf="sideNavClosed === 'false'">
+        Settings
+    </span>
+    </a>
+    <div *ngIf="settingsOpened" class="side-nav-sub">
+      <a *ngIf="currentUser" [routerLink]="URLS.settings.editProfile">
+        <i [class]="'fas fa-user fa-fw fa-lg'" aria-hidden="true"></i>
+        <span *ngIf="sideNavClosed === 'false'">
+        Edit Profile
+      </span>
+      </a>
+      <a *ngIf="currentUser" [routerLink]="URLS.settings.editSecurity">
+        <i [class]="'fas fa-shield-alt fa-fw fa-lg'" aria-hidden="true"></i>
+        <span *ngIf="sideNavClosed === 'false'">
+        Security
+      </span>
+      </a>
+      <a (click)="logout()" *ngIf="currentUser && settingsMoreOpened" href="javascript:void(0)" id=logout>
+        <i [class]="'fas fa-sign-out-alt fa-fw fa-lg'" aria-hidden="true"></i>
+        <span *ngIf="sideNavClosed === 'false'">
+          Logout
+        </span>
+      </a>
+      <a (click)="settingsMoreOpened = !settingsMoreOpened" *ngIf="currentUser" href="javascript:void(0)"
+         id=more-settings>
+        <i [class]="'fas fa-fw fa-lg ' + (!settingsMoreOpened ? 'fa-chevron-down' : 'fa-chevron-up')"
+           aria-hidden="true"></i>
+        <span *ngIf="sideNavClosed === 'false'">
+          {{!settingsMoreOpened ? 'More' : 'Less'}}
+        </span>
+      </a>
+    </div>
+    <a *ngIf="!currentUser" [routerLink]="URLS.signup">
+      <i [class]="'fas fa-user-plus fa-fw fa-lg'" aria-hidden="true"></i>
+      <span *ngIf="sideNavClosed === 'false'">
+        Sign Up
+      </span>
+    </a>
+    <a *ngIf="!currentUser" class="login" [routerLink]="URLS.login">
+      <i [class]="'fas fa-fingerprint fa-fw fa-lg'" aria-hidden="true"></i>
+      <span *ngIf="sideNavClosed === 'false'">
+        Log In
+      </span>
+    </a>
+    <a *ngIf="!currentUser" [routerLink]="URLS.contactUs">
+      <i [class]="'fas fa-envelope fa-fw fa-lg'" aria-hidden="true"></i>
+      <span *ngIf="sideNavClosed === 'false'">
+        Contact Us
+      </span>
+    </a>
+    <a (click)="toggleSideNav()" href="javascript:void(0)" id=menu>
+      <i [class]="'fas fa-fw fa-lg ' + (sideNavClosed === 'false' ? 'fa-angles-left' : 'fa-angles-right')"
+         aria-hidden="true"></i>
+      <span *ngIf="sideNavClosed === 'false'">
+      </span>
+    </a>
+  </nav>
+</div>

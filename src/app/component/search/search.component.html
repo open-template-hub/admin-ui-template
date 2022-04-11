@@ -1,0 +1,10 @@
+<div class="search-area">
+  <i [class]="'fas fa-search fa-fw'" aria-hidden="true"></i>
+  <input #searchArea (keyup)="search($event)" placeholder="Search..." type="text">
+  <div
+      *ngIf="searchResults.length > 0 && searchEnabled"
+      class="search-results">
+    <a (click)="searchResults = []" *ngFor="let result of searchResults"
+       [routerLink]="URLS.user.root + '/' + result.username"></a>
+  </div>
+</div>

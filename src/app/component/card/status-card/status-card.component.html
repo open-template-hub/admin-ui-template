@@ -1,0 +1,44 @@
+<app-card *ngIf="overallSystemStatus.systemStatuses" [bodyTemplate]="bodyTemplate" [defaultHeaderClass]="'underline'"
+          [footerTemplate]="footerTemplate"
+          [header]="'System Status'" class="status-card">
+  <!-- Body -->
+  <ng-template #bodyTemplate>
+    <div class="body">
+      <ng-container *ngFor="let systemStatus of overallSystemStatus.systemStatuses">
+        <div class="status-section solo">
+          <div class="status-column">
+            <oth-led
+                [informationType]="setStatusLed(systemStatus.overall)"></oth-led>
+            <h4>{{ systemStatus.name | titlecase }}
+            </h4>
+          </div>
+        </div>
+        <div *ngFor="let status of systemStatus.statuses; index as i" class="status-section">
+          <div *ngIf="i % 2 == 0" class="status-column">
+            <oth-led
+                [informationType]="setStatusLed(status.alive)"></oth-led>
+            <h4>{{ status.name | titlecase}}
+            </h4>
+          </div>
+          <div *ngIf="i % 2 != 0" class="status-column second">
+            <oth-led
+                [informationType]="setStatusLed(status.alive)"></oth-led>
+            <h4>{{ status.name | titlecase}}
+            </h4>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-template>
+
+  <!-- Footer -->
+  <ng-template #footerTemplate>
+    <div class="footer">
+      <small>{{ overallSystemStatus.checkDate ? 'Last check ' + ( overallSystemStatus.checkDate | date: 'dd MMM, HH:mm:ss' ) : '' }}</small>
+      <div class="right">
+        <small>Overall Status: </small>
+        <oth-led [informationType]="setStatusLed(overallSystemStatus.overall)"></oth-led>
+      </div>
+    </div>
+  </ng-template>
+</app-card>

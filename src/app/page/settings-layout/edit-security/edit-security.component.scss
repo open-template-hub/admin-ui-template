@@ -1,0 +1,80 @@
+@use '../../../../styles/util/util';
+@use '../../../component/card/card.component';
+
+.edit-security-page {
+  & .two-factor-auth-wrapper {
+    @include util.margin-x-auto;
+    @include util.flex-center-center;
+
+    & .edit-two-factor-auth-card {
+
+      & .header {
+        @include util.flex-layout-column;
+        @include util.flex-center-space-evenly;
+
+        text-align: left;
+        padding: 1em 1em 0;
+
+        & i {
+          color: var(--theme-color);
+        }
+
+        & h3 {
+          color: var(--lighter);
+          font-weight: 600;
+          font-size: 19px;
+          margin-top: 10px;
+          padding-bottom: 10px;
+          border-bottom: 2px solid var(--theme-color-lighter-4);
+          text-align: center;
+          width: 100%;
+        }
+      }
+
+      & .body {
+        padding: 40px 20px 20px;
+
+        & .section {
+          margin-top: 0;
+
+          & .verified-phone-number-wrapper {
+            width: -webkit-fit-content;
+            margin-left: auto;
+            margin-right: auto;
+          }
+        }
+      }
+    }
+  }
+
+  & .analytics-event-wrapper {
+    margin-top: 50px;
+  }
+}
+
+@media only screen and (max-width: 999px) {
+  .edit-security-page {
+    padding-top: 40px;
+
+    & .two-factor-auth-wrapper {
+      @include util.flex-layout-column;
+
+      & > * {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .edit-security-page {
+
+    & .two-factor-auth-wrapper {
+      @include util.flex-layout-row;
+
+      & > * {
+        width: 500px;
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+<div class="raw-content-page-layout">
+  <oth-hero [contents]="[{ text: 'Docs', level: 1 }]"></oth-hero>
+  <div class="flexible-cards-wrapper">
+    <ng-container *ngFor="let doc of DOCS">
+      <app-doc-holder-card
+          (click)="openDoc(doc.tag, doc.key)"
+          [doc]="doc"
+          class="doc-holder-card"></app-doc-holder-card>
+    </ng-container>
+  </div>
+</div>

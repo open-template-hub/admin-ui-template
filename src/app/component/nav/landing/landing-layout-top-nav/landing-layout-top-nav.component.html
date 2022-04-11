@@ -1,0 +1,62 @@
+<nav #dropdownMenuParent class="top-nav">
+  <a [routerLink]="URLS.root"
+     class="brand">
+    <img [src]="BRAND.logo.main" alt="logo" class="brand-logo" height="40" width="40"/>
+    <h2>Open Template Hub</h2>
+  </a>
+  <div class="left-item-wrapper">
+  </div>
+  <div class="right-item-wrapper">
+    <a *ngIf="!currentUser" [href]="environmentCommon.website.github.url + '/' + environmentCommon.oth.social.github"
+       [target]="'_blank'">
+      <i [class]="'fab fa-github fa-fw'" aria-hidden="true"></i>
+      <span> GitHub </span>
+    </a>
+    <a *ngIf="!currentUser" [routerLink]="URLS.contactUs">
+      <i [class]="'fas fa-envelope fa-fw'" aria-hidden="true"></i>
+      <span i18n="@@landingLayoutTopNav.contactUs">Contact Us</span>
+    </a>
+    <a *ngIf="!currentUser" [routerLink]="URLS.login">
+      <i [class]="'fas fa-fingerprint fa-fw'" aria-hidden="true"></i>
+      <span i18n="@@landingLayoutTopNav.login">Login</span>
+    </a>
+    <a *ngIf="!currentUser" [routerLink]="URLS.signup"
+       class="sign-up">
+      <i [class]="'fas fa-user-plus fa-fw'" aria-hidden="true"></i>
+      <span i18n="@@landingLayoutTopNav.signUp">Sign Up</span>
+    </a>
+    <a *ngIf="currentUser" [routerLink]="URLS.dashboard.root">
+      <i [class]="'fas fa-clipboard-list fa-fw'" aria-hidden="true"></i>
+      <span i18n="@@landingLayoutTopNav.contactUs">Dashboard</span>
+    </a>
+    <a *ngIf="currentUser" [routerLink]="URLS.dashboard.notifications">
+      <div class="notifications" *ngIf="notifications.length > 0" [class.smaller-font]="notifications.length > 9">
+        {{ notifications.length > 9 ? '9+' : notifications.length }}
+      </div>
+      <i [class]="'fas fa-bell fa-fw'" aria-hidden="true"></i>
+      <span i18n="@@landingLayoutTopNav.contactUs">Notifications</span>
+    </a>
+    <a [routerLink]="URLS.dashboard.premium" *ngIf="currentUser">
+      <i [class]="'fas fa-star fa-fw yellow-theme'" aria-hidden="true"
+         style="color: var(--theme-color);"></i>
+      <span i18n="@@landingLayoutTopNav.premium">Premium</span>
+    </a>
+    <a (click)="dropdownMenuProducts.toggleDropdown();"
+       (mouseenter)="dropdownMenuProducts.openDropdown();"
+       *ngIf="currentUser">
+      <i [class]="'fas fa-cog fa-fw'" aria-hidden="true"></i>
+      <app-dropdown-menu
+          #dropdownMenuProducts
+          [dropdownParent]="dropdownMenuParent"
+          [items]="settings">
+        <span i18n="@@landingLayoutTopNav.settings">Settings</span>
+      </app-dropdown-menu>
+    </a>
+    <a *ngIf="currentUser" [routerLink]="URLS.dashboard.myProfile">
+      <img [class.premium-border]="userIsPremium" [src]="profileImg" alt="profile img"
+           class="profile-img-small yellow-theme"/>
+      <span i18n="@@landingLayoutTopNav.myProfile">My Profile</span>
+    </a>
+  </div>
+</nav>
+<div [class.landing-layout-top-nav-loading-bar]="loading"></div>

@@ -1,0 +1,39 @@
+<!-- Employees -->
+<oth-hero [contents]="employeeAppHeroContents"></oth-hero>
+<div class="employees-wrapper">
+  <ng-container *ngFor="let employee of EMPLOYEES; last as isLast">
+    <hr *ngIf="isLast"/>
+    <app-employee-card [employee]="employee"></app-employee-card>
+  </ng-container>
+</div>
+
+<!-- Follow Us -->
+<oth-hero [contents]="followUsAppHeroContents">
+</oth-hero>
+<div class="websites-wrapper">
+  <ng-container *ngFor="let website of websites">
+    <app-brand-button (click)="redirect(website.url + '/' + website.handle)" [icon]="website.cssClass"
+                      [text]="website.name | titlecase">
+    </app-brand-button>
+  </ng-container>
+</div>
+
+<!-- Contact Information -->
+<oth-hero [contents]="contactInformationAppHeroContents"></oth-hero>
+<div class="contact-information-wrapper">
+  <app-contact-information-card></app-contact-information-card>
+</div>
+
+<!-- History of Us -->
+<oth-hero [contents]="historyOfUsAppHeroContents"></oth-hero>
+<div class="timeline-wrapper">
+  <ng-container *ngFor="let timelineItem of OTH_TIME_LINE; index as i">
+    <app-timeline-card [arrow]="i % 2 === 0 ? 'left' : 'right'" [class.left]="i % 2 === 0"
+                       [class.right]="i % 2 === 1"
+                       [timelineItem]="timelineItem">
+    </app-timeline-card>
+    <hr [class.left]="i % 2 === 0"
+        [class.right]="i % 2 === 1"
+        class="timeline-hr"/>
+  </ng-container>
+</div>

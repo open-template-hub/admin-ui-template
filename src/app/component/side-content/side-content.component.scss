@@ -1,0 +1,46 @@
+app-search {
+  display: flex;
+  color: var(--color);
+  align-items: center;
+  position: fixed;
+  z-index: 12;
+  background-color: transparent;
+  height: 70px;
+  justify-content: center;
+}
+
+.side-content-wrapper {
+  height: calc(100% - 105px);
+  position: fixed;
+  right: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: transparent;
+  z-index: 2;
+  margin: 100px 0 0;
+
+  & app-activity-card {
+    width: 95%;
+    margin-bottom: 20px;
+  }
+}
+
+#more-settings {
+  border-top: 1px solid var(--hover);
+}
+
+@media only screen and (max-width: 999px) {
+  .side-content-wrapper, app-search {
+    visibility: hidden;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .side-content-wrapper, app-search {
+    visibility: visible;
+  }
+}

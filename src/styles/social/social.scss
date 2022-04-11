@@ -1,0 +1,43 @@
+$social-colors: (
+    "social": #898989,
+    "twitter": #00aced,
+    "google": #db4437,
+    "facebook-f": #1877f2,
+    "linkedin-in": #2867b2,
+    "vk": #4a76a8,
+    "twitch": #8c45f6,
+    "dribbble": #ea4c89,
+    "reddit": #ff4500,
+    "pinterest": #e60023,
+    "github": #171515,
+    "youtube": #e52d27,
+    "buymeacoffee": #FF813F,
+    "patreon": #F96854,
+    "product-hunt": #DA552F,
+    "aws": #FF9900,
+    "google-cloud": #4285F4,
+    "npm": #CB3837,
+    "gmail": #EA4335,
+    "yahoo": #6001D2,
+    "outlook": #0078D4,
+    "stripe": #4553ff,
+    "coinbase": #1652f0,
+    "paypal": #169BD7,
+    "discord": #5865F2
+);
+
+:root {
+  @each $brand, $color in $social-colors {
+    --#{$brand}: #{$color};
+  }
+}
+
+@mixin define-social-color($name) {
+  .#{$name} {
+    --social: var(--#{$name});
+  }
+}
+
+@each $color, $_ in $social-colors {
+  @include define-social-color(#{$color});
+}

@@ -1,0 +1,38 @@
+<div class="form-page-layout">
+  <!-- Welcome -->
+  <app-card [bodyTemplate]="bodyTemplate" [defaultHeaderClass]="'underline'" [header]="'Verify SMS Code'"
+            class="two-factor-authentication-card">
+    <!-- Body -->
+    <ng-template #bodyTemplate>
+      <div class="body">
+        <form (ngSubmit)="onSubmit()" [formGroup]="form">
+          <div class="section">
+            <p>Two factor authentication code sent to {{ maskedPhoneNumber }}</p>
+            <div [class.error-input]="submitted && form.controls.verificationCode.invalid" class="input-with-icon">
+              <oth-countdown
+                  [timeLeft]="timeLeft < 0 ? 0 : timeLeft"
+                  [totalTime]="totalTime">
+              </oth-countdown>
+              <input autocomplete="one-time-code" formControlName="verificationCode" placeholder="Code" required
+                     type="text">
+              <i aria-hidden="true" class="fas fa-key fa-lg fa-fw"></i>
+            </div>
+          </div>
+          <div class="section-submit">
+            <app-button [disabled]="timeLeft <= 0" i18n-text="@@loginPage.loginButton"
+                        text="SUBMIT"></app-button>
+            <p *ngIf="timeLeft <= 0" i18n="@@signUp.alreadyHaveAccount">
+              Time has expired, please
+              <a [routerLink]="URLS.login" class="theme-color-link">
+                retry
+              </a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </ng-template>
+  </app-card>
+</div>
+<app-cookies></app-cookies>
+
+

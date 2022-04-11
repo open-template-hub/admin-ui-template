@@ -1,0 +1,74 @@
+<div class="hero">
+  <div class="hero-left">
+    <h2>Open Template Hub <br/>Web UI Template</h2>
+    <p>
+      {{ BRAND.bio }}
+    </p>
+    <app-button [routerLink]="URLS.signup" i18n-text="@@homePage.getStartedButton" text="Demo"></app-button>
+  </div>
+</div>
+
+<!-- Counters -->
+<div class="counters">
+  <a [href]="environmentCommon.website.github.url + '/' + environmentCommon.oth.social.github + '/' + 'web-ui-template'"
+     class="counter-wrapper" rel="noopener" target="_blank">
+    <app-text-content-loader *ngIf="isCountersLoading" [size]="'30'" class="loader"></app-text-content-loader>
+    <p class="counter">{{ ( counters && counters[ 0 ].value ) ? counters[ 0 ].value : '' }}</p>
+    <p class="description">Current Version</p>
+  </a>
+  <a [href]="environmentCommon.website.github.url + '/' + environmentCommon.oth.social.github + '/' + 'web-ui-template'"
+     class="counter-wrapper" rel="noopener" target="_blank">
+    <app-text-content-loader *ngIf="isCountersLoading" [size]="'30'" class="loader"></app-text-content-loader>
+    <p class="counter">{{ ( counters && counters[ 1 ].value ) ? counters[ 1 ].value : '' }}</p>
+    <p class="description">Stars</p>
+  </a>
+  <a [href]="environmentCommon.website.github.url + '/' + environmentCommon.oth.social.github + '/' + 'web-ui-template'"
+     class="counter-wrapper" rel="noopener" target="_blank">
+    <app-text-content-loader *ngIf="isCountersLoading" [size]="'30'" class="loader"></app-text-content-loader>
+    <p class="counter">{{ ( counters && counters[ 2 ].value ) ? counters[ 2 ].value : '' }}</p>
+    <p class="description">Forks</p>
+  </a>
+  <a [href]="environmentCommon.website.github.url + '/' + environmentCommon.oth.social.github + '/' + 'web-ui-template'"
+     class="counter-wrapper" rel="noopener" target="_blank">
+    <app-text-content-loader *ngIf="isCountersLoading" [size]="'30'" class="loader"></app-text-content-loader>
+    <p class="counter">{{ ( counters && counters[ 3 ].value ) ? counters[ 3 ].value : '' }}</p>
+    <p class="description">Subscribers</p>
+  </a>
+</div>
+
+<!-- What Is Web UI Template -->
+<oth-hero [contents]="whatIsWebUITemplateTitle"></oth-hero>
+
+<div *ngIf="screenshots" class="screenshots-wrapper">
+  <app-screenshot-swiper
+      [screenshots]="screenshots"></app-screenshot-swiper>
+</div>
+
+<!-- Explore -->
+<oth-hero [contents]="integratedWithTitle"></oth-hero>
+<ng-container *ngFor="let productLine of PRODUCT_LINES">
+  <div class="cards-wrapper">
+    <ng-container *ngFor="let product of productLine.products">
+      <app-presentation-card
+          [class]="product.color ? product.color : ''"
+          [footerText]=getPresentationCardFooter(product.openSource)
+          [href]="'https://opentemplatehub.com/' + URLS.product + '/' + productLine.key + '/' + product.key"
+          [imgHeight]="150"
+          [maintenance]="product.url === URLS.maintenance"
+          [secondaryText]="product.description"
+          [src]="product.logo"
+          [title]="product.name"
+          class="related-product">
+      </app-presentation-card>
+    </ng-container>
+  </div>
+</ng-container>
+
+<!-- System status -->
+<div class="form-page-layout">
+  <oth-hero [contents]="statusTitle"></oth-hero>
+  <app-status-card [overallSystemStatus]="overallSystemStatus"></app-status-card>
+</div>
+
+<!-- Cookies -->
+<app-cookies></app-cookies>

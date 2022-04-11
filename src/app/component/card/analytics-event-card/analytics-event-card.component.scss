@@ -1,0 +1,219 @@
+@use '../../../../styles/util/util';
+
+.analytics-event-card {
+
+  font-size: 18px;
+
+  & .header {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 1em 1em 0;
+
+    & .upper-header-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      & i {
+        color: var(--theme-color);
+      }
+
+      & h3 {
+        color: var(--lighter);
+        font-weight: 600;
+        font-size: 19px;
+        margin-top: 10px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--theme-color-lighter-4);
+        text-align: center;
+        width: 100%;
+      }
+    }
+
+    & .filters-wrapper {
+      padding: 15px;
+      display: flex;
+      justify-content: space-around;
+      height: 50px;
+
+      & .category-filter-wrapper, & .date-filter-wrapper {
+        @include util.default-border-radius;
+        @include util.default-shadow;
+        // border: 1px solid var(--lighter-contrast);
+
+        & i {
+          color: var(--color);
+        }
+      }
+
+      & .category-filter-wrapper {
+        display: flex;
+        align-items: center;
+        padding-left: 25px;
+
+        & select {
+          border: initial;
+          -webkit-appearance: borderless-attachment;
+          -moz-appearance: none;
+          -o-appearance: none;
+          appearance: none;
+        }
+
+        & select::-ms-expand {
+          display: none;
+        }
+
+        & i {
+          padding-right: 7px;
+        }
+      }
+
+      & .date-filter-wrapper {
+        display: flex;
+        align-items: center;
+        margin-left: 25px;
+        padding-left: 25px;
+
+        & p {
+          white-space: nowrap;
+        }
+
+        & input {
+          border-bottom: initial;
+        }
+
+      }
+    }
+  }
+
+  & .body {
+    @include util.flex-layout-row;
+
+    flex-wrap: wrap;
+    text-align: left;
+    padding: 0 2em 1em;
+    height: -webkit-fit-content;
+    margin-top: 40px;
+
+    & .row {
+      @include util.flex-layout-row;
+      width: 33.333%;
+
+      box-sizing: border-box;
+      padding: 10px 15px;
+      border-bottom: 2px solid var(--theme-color-lighter-8);
+      align-items: center;
+
+      & img {
+        width: 40px;
+        height: 40px;
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+
+      & .column {
+        @include util.flex-layout-column;
+        margin-left: 5px;
+        margin-right: auto;
+        padding: 0 10px;
+
+        p {
+          color: var(--lighter);
+          font-weight: 300;
+          padding-bottom: 5px;
+          text-overflow: ellipsis;
+          overflow: auto;
+        }
+
+        & .date {
+          font-size: 15px;
+        }
+      }
+    }
+
+    & .empty-body {
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--lighter-contrast);
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
+
+  & .footer {
+    @include util.flex-layout-row;
+
+    justify-content: space-between;
+    align-items: center;
+
+    box-sizing: border-box;
+
+    padding: 1em 2.5em 2em;
+    width: 100%;
+    margin-left: auto;
+    color: var(--lighter-contrast);
+
+    & .page-routing-wrapper {
+      display: flex;
+      font-size: 20px;
+      align-items: center;
+      width: -webkit-fit-content;
+
+      & * {
+        padding: 5px;
+      }
+
+      & span {
+        color: var(--lighter);
+      }
+
+      & i {
+        cursor: initial;
+        color: var(--lighter-contrast);
+
+        &.active-routing-item {
+          color: var(--theme-color);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 999px) {
+  .analytics-event-card {
+    & .header {
+      & .filters-wrapper {
+        flex-direction: column;
+        height: -webkit-fit-content;
+        padding: 0;
+        margin-top: 20px;
+
+        & .category-filter-wrapper {
+          & select {
+            white-space: break-spaces;
+          }
+        }
+
+        & .date-filter-wrapper {
+          flex-wrap: wrap;
+          margin-top: 20px;
+          margin-left: 0;
+
+          & input {
+            width: -webkit-fit-content;
+          }
+        }
+      }
+    }
+
+    & .body {
+      & .row {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+}

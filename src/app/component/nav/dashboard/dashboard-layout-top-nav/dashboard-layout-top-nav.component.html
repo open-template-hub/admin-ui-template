@@ -1,0 +1,16 @@
+<div [class.dashboard-layout-top-nav-loading-bar]="loading">
+</div>
+<nav class="dashboard-layout-top-nav">
+  <a routerLink="{{URLS.dashboard.root}}">
+    <img [src]="BRAND.logo.main" alt="brand logo" class="brand-logo" height="40"/>
+  </a>
+  <div #searchArea class="input-with-icon">
+    <input (keyup)="search($event)" placeholder="Search..." type="text">
+    <i aria-hidden="true" class="fas fa-search fa-lg fa-fw"></i>
+  </div>
+</nav>
+<div #searchArea *ngIf="searchResults.length > 0 && searchEnabled"
+     class="dashboard-layout-top-nav-search-results">
+  <a (click)="searchResults = []" *ngFor="let result of searchResults">
+  </a>
+</div>

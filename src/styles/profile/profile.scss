@@ -1,0 +1,54 @@
+@use '../util/util';
+
+.profile-img-small, .profile-img-wrapper {
+  @include util.default-border-radius-image;
+}
+
+.profile-img {
+  @include util.default-border-radius-image;
+  @include util.margin-x-auto;
+
+  position: relative;
+
+  background-color: var(--card);
+  border: 2px solid var(--shadow-lighter);
+  box-shadow: 0 -6px 15px -7px var(--shadow);
+
+  width: 120px;
+  height: 120px;
+
+  padding: 5px;
+
+  & app-image-content-loader {
+    @include util.margin-x-auto;
+  }
+
+  &.premium-border {
+    border: 1px solid var(--theme-color);
+  }
+}
+
+.profile-img-small {
+  display: block;
+
+  border: {
+    width: 1px;
+    style: solid;
+    color: var(--shadow-lighter);
+  }
+
+  width: 38px;
+  height: 38px;
+  box-shadow: 0 3px 3px var(--shadow-dark-mode);
+
+  &.premium-border {
+    border: 1px solid var(--theme-color);
+  }
+}
+
+.profile-img-wrapper {
+  border: none;
+  margin-bottom: 2em;
+  box-shadow: 0 3px 2px var(--shadow);
+  max-width: fit-content;
+}

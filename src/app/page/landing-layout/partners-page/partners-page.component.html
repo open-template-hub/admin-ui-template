@@ -1,0 +1,13 @@
+<!-- Employees -->
+<oth-hero [contents]="partnersTitle"></oth-hero>
+<div class="business-partners-wrapper">
+  <app-business-partner-swiper [partners]="PARTNERS">
+  </app-business-partner-swiper>
+  <app-cookies></app-cookies>
+</div>
+
+<div class="cards-wrapper">
+  <app-button [buttonClasses]="['theme-color-border-color', 'theme-color-font-color', 'transparent-button']" [routerLink]="URLS.contactUs"
+              [text]="'Join our partner program'">
+  </app-button>
+</div>

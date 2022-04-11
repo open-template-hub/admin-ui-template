@@ -1,0 +1,21 @@
+@use '../../../../../styles/bottom-nav/bottom-nav';
+
+.profile-img-small {
+  width: 24px;
+  height: 24px;
+  margin: 0.2em;
+  box-shadow: 0 2px 2px var(--shadow-dark-mode);
+  box-sizing: border-box;
+}
+
+@media only screen and (max-width: 999px) {
+  .bottom-nav {
+    visibility: visible;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .bottom-nav {
+    visibility: hidden;
+  }
+}

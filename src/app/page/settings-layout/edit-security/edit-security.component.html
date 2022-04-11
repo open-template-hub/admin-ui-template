@@ -1,0 +1,59 @@
+<div class="edit-security-page">
+
+  <div class="two-factor-auth-wrapper">
+    <app-card *ngIf="twoFactorVerificationState" [bodyTemplate]="bodyTemplate" [headerTemplate]="headerTemplate"
+              class="edit-two-factor-auth-card">
+      <!-- Header -->
+      <ng-template #headerTemplate>
+        <div class="header">
+          <h3>Two Factor Authentication</h3>
+        </div>
+      </ng-template>
+
+      <!-- Body -->
+      <ng-template #bodyTemplate>
+        <form (ngSubmit)="onPhoneNumberSubmit()" [formGroup]="form" class="body">
+          <div class="section">
+            <div
+                *ngIf="twoFactorVerificationState === 'request' || twoFactorVerificationState === 'verify' || twoFactorVerificationState === 'expired'"
+                [class.error-input]="submitted && form.controls.phoneNumber.invalid"
+                class="input-with-icon phone-number-request-input-wrapper">
+              <input formControlName="phoneNumber" placeholder="Phone Number" type="text">
+              <i aria-hidden="true" class="fas fa-phone fa-lg fa-fw"></i>
+            </div>
+            <div *ngIf="twoFactorVerificationState === 'verify' || twoFactorVerificationState === 'expired'"
+                 class="input-with-icon phone-number-verify-input-wrapper">
+              <oth-countdown
+                  [timeLeft]="timeLeft < 0 ? 0 : timeLeft"
+                  [totalTime]="totalTime">
+              </oth-countdown>
+              <input autocomplete="one-time-code" formControlName="verificationCode" placeholder="Verification Code"
+                     type="text">
+              <i aria-hidden="true" class="fas fa-key fa-lg fa-fw"></i>
+            </div>
+            <div *ngIf="twoFactorVerificationState === 'verified'"
+                 class="input-with-icon verified-phone-number-wrapper">
+              <p>{{ submittedPhoneNumber }}</p>
+              <i aria-hidden="true" class="fas fa-phone fa-lg fa-fw"></i>
+            </div>
+          </div>
+
+          <div class="section-submit">
+            <app-button *ngIf="twoFactorVerificationState === 'request' || twoFactorVerificationState === 'verify'"
+                        text="Submit"></app-button>
+            <app-button (click)="retry()" *ngIf="twoFactorVerificationState === 'expired'" [buttonClasses]="['information-button']"
+                        text="Retry"></app-button>
+            <app-button (click)="deleteSubmittedPhoneNumber()" *ngIf="twoFactorVerificationState === 'verified'"
+                        [buttonClasses]="['error-background-color']" text="Delete"></app-button>
+          </div>
+        </form>
+      </ng-template>
+    </app-card>
+  </div>
+
+  <div class="analytics-event-wrapper">
+    <app-analytics-event-card class="recent-activity">
+    </app-analytics-event-card>
+  </div>
+</div>
+

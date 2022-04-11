@@ -1,0 +1,16 @@
+@use '../../../component/card/card.component';
+
+.premium-card {
+
+  & .body {
+    @include card.default-body;
+  }
+
+  & .footer {
+    @include card.default-footer;
+  }
+}
+
+.cards-wrapper {
+  width: 100%;
+}

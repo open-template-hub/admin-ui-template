@@ -1,0 +1,21 @@
+<app-card
+    [bodyTemplate]="bodyTemplate"
+    [headerTemplate]="headerTemplate"
+    class="activity-card">
+  <ng-template #headerTemplate>
+    <div class="header">
+      <p>Recent Activities</p>
+    </div>
+  </ng-template>
+  <ng-template #bodyTemplate>
+    <div class="body">
+      <div *ngFor="let event of events; let last = last" class="row">
+        <img [src]="event.payload?.icon ? event.payload.icon : './assets/common/activity.png'" alt="activity icon">
+        <div *ngIf="categories[event.category]" class="column">
+          <p class="message">{{ categories[ event.category ] }}</p>
+          <p class="date">{{ timestampToString( event.timestamp ) }}</p>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</app-card>

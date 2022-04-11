@@ -1,0 +1,117 @@
+@use '../../../../../styles/util/util';
+
+.top-nav {
+  @include util.flex-layout-row;
+  @include util.flex-center-center;
+
+  height: 90px;
+  padding: 0 45px;
+  box-shadow: 5px 0 10px var(--shadow);
+  background-color: var(--background-color-alpha);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+
+  & a {
+    @include util.flex-layout-column;
+
+    justify-content: flex-end;
+    align-items: center;
+
+    padding: 0 20px;
+    box-sizing: border-box;
+
+    height: 50px;
+
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: 5px;
+
+    position: relative;
+
+    & .notifications {
+      @include util.flex-layout-row;
+      @include util.flex-center-center;
+
+      border-radius: 100%;
+      width: 18px;
+      height: 18px;
+      box-sizing: border-box;
+      box-shadow: 0 -6px 15px -7px var(--shadow);
+      border: 1px solid var(--card);
+      background-color: var(--error);
+      color: var(--card);
+
+      position: absolute;
+      left: 57px;
+      top: 2px;
+
+      &.smaller-font {
+        font-size: 11px;
+      }
+    }
+
+    & i {
+      font-size: 21px;
+
+      margin-right: 0.15em;
+
+      &.caret {
+        font-size: 18px;
+        margin-left: 0.25em;
+      }
+    }
+
+    & span {
+      padding-top: 5px;
+    }
+
+    &.brand {
+      @include util.flex-layout-row;
+      font-size: 14px;
+      margin-right: 10px;
+    }
+  }
+}
+
+.top-nav .right-item-wrapper .sign-up {
+  border-bottom: var(--theme-color) 2px solid;
+  padding-bottom: 3px;
+  box-sizing: content-box;
+}
+
+.top-nav .brand > * {
+  margin: 0.2em;
+}
+
+.top-nav .left-item-wrapper {
+  margin-right: auto;
+}
+
+.right-item-wrapper {
+  display: flex;
+  padding-bottom: 5px;
+}
+
+.profile-img-small {
+  margin-right: 10px;
+  width: 28px;
+  height: 28px;
+}
+
+@media only screen and (max-width: 999px) {
+  .top-nav {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .top-nav a {
+    display: flex;
+  }
+}
+
+@media (hover: hover) {
+  .top-nav a:first-child:hover {
+    background: none;
+  }
+}

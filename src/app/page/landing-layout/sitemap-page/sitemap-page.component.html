@@ -1,0 +1,64 @@
+<div class="form-page-layout">
+  <app-card [bodyTemplate]="bodyTemplate" [defaultHeaderClass]="'underline'" [header]="'Sitemap'">
+    <ng-template #bodyTemplate>
+      <div class="body">
+        <div class="column">
+          <div class="link-inner-column">
+            <div class="link-group">
+              <div class="title">
+                <p i18n="@@sitemap.company">Company</p>
+              </div>
+              <ng-container *ngFor="let companyPage of COMPANY_PAGES">
+                <a *ngIf="!companyPage.isExternal" [routerLink]="companyPage.url" class="link-item">
+                  {{ companyPage.name }}
+                </a>
+                <app-ext-link *ngIf="companyPage.isExternal" [href]="companyPage.url" [linkClass]="'align-flex-start link'"
+                              class="link-item">
+                <span body>
+                  {{ companyPage.name }}
+                </span>
+                </app-ext-link>
+              </ng-container>
+            </div>
+            <div class="link-group">
+              <div class="title">
+                <p i18n="@@sitemap.developers">Developers</p>
+              </div>
+              <ng-container *ngFor="let developersPage of DEVELOPERS_PAGES">
+                <a *ngIf="!developersPage.isExternal" [routerLink]="developersPage.url" class="link-item">
+                  {{ developersPage.name }}
+                </a>
+                <app-ext-link *ngIf="developersPage.isExternal" [href]="developersPage.url" [linkClass]="'align-flex-start link'"
+                              class="link-item">
+                  <span body>
+                    {{ developersPage.name }}
+                  </span>
+                </app-ext-link>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="link-inner-column">
+            <div class="link-group">
+              <div class="title">
+                <p i18n="@@sitemap.resources">Resources</p>
+              </div>
+              <ng-container *ngFor="let resourcesPage of RESOURCES_PAGES">
+                <a *ngIf="!resourcesPage.isExternal" [routerLink]="resourcesPage.url" class="link-item">
+                  {{ resourcesPage.name }}
+                </a>
+                <app-ext-link *ngIf="resourcesPage.isExternal" [href]="resourcesPage.url" [linkClass]="'link'"
+                              class="link-item">
+                <span body>
+                  {{ resourcesPage.name }}
+                </span>
+                </app-ext-link>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </app-card>
+</div>
