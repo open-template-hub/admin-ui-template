@@ -53,19 +53,19 @@ export class HomePageComponent {
     }
   ];
 
-  whatIsWebUITemplateTitle = [
-    { text: $localize`:@@homePage.whatIsWebUITemplateTitle.1:What is Web UI Template?`, level: 2 },
-    { text: $localize`:@@homePage.whatIsWebUITemplateTitle.2:Web UI Template is modern, responsive and customisable web ui template for your business. It contains reusable components, theme color and design support along with dark theme support.` }
+  whatIsAdminUITemplateTitle = [
+    { text: $localize`:@@homePage.whatIsWebUITemplateTitle.1:What is Admin UI Template?`, level: 2 },
+    { text: $localize`:@@homePage.whatIsWebUITemplateTitle.2:Admin UI Template is modern, responsive and customisable admin ui template for your business. It contains reusable components, theme color and design support along with dark theme support.` }
   ];
 
   integratedWithTitle = [
     { text: $localize`:@@homePage.integratedWithTitle.1:Integrated With`, level: 2 },
-    { text: $localize`:@@homePage.integratedWithTitle.2:Web UI Template is already integrated with our other open source products. Start using Web UI Template to interact with them.` }
+    { text: $localize`:@@homePage.integratedWithTitle.2:Admin UI Template is already integrated with our other open source products. Start using Admin UI Template to interact with them.` }
   ];
 
   statusTitle = [
     { text: $localize`:@@status.appHero:System Status`, level: 2 },
-    { text: $localize`:@@status.statusTitle.2:Before testing Web UI, make sure other Open Template Hub products are up and running.` }
+    { text: $localize`:@@status.statusTitle.2:Before testing Admin UI, make sure other Open Template Hub products are up and running.` }
   ];
 
   constructor(
@@ -91,14 +91,14 @@ export class HomePageComponent {
       }
     } );
 
-    this.githubService.getGithubCounters( 'web-ui-template' )
+    this.githubService.getGithubCounters( 'admin-ui-template' )
     .then( counters => {
       this.isCountersLoading = false;
       this.counters = counters;
     } )
     .catch( error => {
       this.isCountersLoading = false;
-      console.error( 'Error while getting Github Counters for product: ', 'web-ui-template', error );
+      console.error( 'Error while getting Github Counters for product: ', 'admin-ui-template', error );
     } );
   }
 

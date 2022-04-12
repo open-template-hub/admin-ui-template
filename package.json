@@ -1,6 +1,6 @@
 {
-  "name": "web-ui-template",
-  "description": "Web UI Template is a modern, responsive, and customizable web UI template for your business. It contains reusable components, theme color, and design support along with dark theme support.",
+  "name": "admin-ui-template",
+  "description": "Admin UI Template is a modern, responsive, and customizable admin UI template for your business. It contains reusable components, theme color, and design support along with dark theme support.",
   "version": "4.0.4",
   "license": "MIT",
   "scripts": {
@@ -91,10 +91,10 @@
     "tslint": "^6.1.0",
     "typescript": "^4.6.3"
   },
-  "git repository": "https://github.com/open-template-hub/web-ui-template",
+  "git repository": "https://github.com/open-template-hub/admin-ui-template",
   "repository": {
     "type": "git",
-    "url": "https://github.com/open-template-hub/web-ui-template.git"
+    "url": "https://github.com/open-template-hub/admin-ui-template.git"
   },
   "keywords": [
     "angular",
@@ -102,7 +102,7 @@
     "ui-components",
     "angular-components",
     "web",
-    "web-ui",
+    "admin-ui",
     "open-template-hub"
   ]
 }

@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "web-ui-template": {
+    "admin-ui-template": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -26,7 +26,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/web-ui-template",
+            "outputPath": "dist/admin-ui-template",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -135,30 +135,30 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "web-ui-template:build"
+            "browserTarget": "admin-ui-template:build"
           },
           "configurations": {
             "fr": {
-              "browserTarget": "web-ui-template:build:fr"
+              "browserTarget": "admin-ui-template:build:fr"
             },
             "production": {
-              "browserTarget": "web-ui-template:build:production"
+              "browserTarget": "admin-ui-template:build:production"
             },
             "staging": {
-              "browserTarget": "web-ui-template:build:staging"
+              "browserTarget": "admin-ui-template:build:staging"
             },
             "local": {
-              "browserTarget": "web-ui-template:build:local"
+              "browserTarget": "admin-ui-template:build:local"
             },
             "local-to-staging-api": {
-              "browserTarget": "web-ui-template:build:local-to-staging-api"
+              "browserTarget": "admin-ui-template:build:local-to-staging-api"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "web-ui-template:build"
+            "browserTarget": "admin-ui-template:build"
           }
         },
         "test": {
@@ -218,16 +218,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "web-ui-template:serve"
+            "devServerTarget": "admin-ui-template:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "web-ui-template:serve:production"
+              "devServerTarget": "admin-ui-template:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "web-ui-template"
+  "defaultProject": "admin-ui-template"
 }
