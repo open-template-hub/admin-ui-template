@@ -23,7 +23,7 @@ Admin UI Template is a modern, responsive, and customizable admin UI template fo
 </h3>
 
 <p align="center">
-  <a href="https://web.opentemplatehub.com">
+  <a href="https://admin.opentemplatehub.com">
     <img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/demo/ui/web-ui-demo-light.png" alt="Screenshot" width="800px">
   </a>
 </p>
