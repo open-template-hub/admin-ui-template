@@ -8,13 +8,13 @@ const columnIndexes = [ 0, 0, 0, 0 ];
 console.log(
     '<p align="center">\n' +
     '  <a href="https://opentemplatehub.com">\n' +
-    '    <img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/logo/ui/web-ui-logo.png" alt="Logo" width=200>\n' +
+    '    <img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/logo/ui/admin-ui-logo.png" alt="Logo" width=200>\n' +
     '  </a>\n' +
     '</p>\n' +
     '\n' +
     '\n' +
     '<h1 align="center">\n' +
-    'Open Template Hub - Web UI Template v4\n' +
+    'Open Template Hub - Admin UI Template v4\n' +
     '  <br/>\n' +
     '(outdated packages)\n' +
     '</h1>\n' +
