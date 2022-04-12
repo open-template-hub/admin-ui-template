@@ -1,22 +1,22 @@
 <p align="center">
   <a href="https://opentemplatehub.com">
-    <img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/logo/ui/web-ui-logo.png" alt="Logo" width=200>
+    <img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/logo/ui/admin-ui-logo.png" alt="Logo" width=200>
   </a>
 </p>
 
 <h1 align="center">
-Open Template Hub - Web UI Template v4
+Open Template Hub - Admin UI Template v4
 </h1>
 
-[![License](https://img.shields.io/github/license/open-template-hub/web-ui-template?color=43b043&style=for-the-badge)](LICENSE)
-[![Issues](https://img.shields.io/github/issues/open-template-hub/web-ui-template?color=43b043&style=for-the-badge)](https://github.com/open-template-hub/web-ui-template/issues)
-[![PRCLosed](https://img.shields.io/github/issues-pr-closed-raw/open-template-hub/web-ui-template?color=43b043&style=for-the-badge)](https://github.com/open-template-hub/web-ui-template/pulls?q=is%3Apr+is%3Aclosed)
-[![LastCommit](https://img.shields.io/github/last-commit/open-template-hub/web-ui-template?color=43b043&style=for-the-badge)](https://github.com/open-template-hub/web-ui-template/commits/master)
-[![Release](https://img.shields.io/github/release/open-template-hub/web-ui-template?include_prereleases&color=43b043&style=for-the-badge)](https://github.com/open-template-hub/web-ui-template/releases)
+[![License](https://img.shields.io/github/license/open-template-hub/admin-ui-template?color=43b043&style=for-the-badge)](LICENSE)
+[![Issues](https://img.shields.io/github/issues/open-template-hub/admin-ui-template?color=43b043&style=for-the-badge)](https://github.com/open-template-hub/admin-ui-template/issues)
+[![PRCLosed](https://img.shields.io/github/issues-pr-closed-raw/open-template-hub/admin-ui-template?color=43b043&style=for-the-badge)](https://github.com/open-template-hub/admin-ui-template/pulls?q=is%3Apr+is%3Aclosed)
+[![LastCommit](https://img.shields.io/github/last-commit/open-template-hub/admin-ui-template?color=43b043&style=for-the-badge)](https://github.com/open-template-hub/admin-ui-template/commits/master)
+[![Release](https://img.shields.io/github/release/open-template-hub/admin-ui-template?include_prereleases&color=43b043&style=for-the-badge)](https://github.com/open-template-hub/admin-ui-template/releases)
 [![Lighthouse](https://img.shields.io/badge/LIGHTHOUSE-report-43b043.svg?style=for-the-badge&logo=lighthouse)](docs/lighthouse)
-[![SonarCloud](https://img.shields.io/sonar/quality_gate/open-template-hub_web-ui-template?server=https%3A%2F%2Fsonarcloud.io&label=Sonar%20Cloud&style=for-the-badge&logo=sonarcloud)](https://sonarcloud.io/dashboard?id=open-template-hub_web-ui-template)
+[![SonarCloud](https://img.shields.io/sonar/quality_gate/open-template-hub_admin-ui-template?server=https%3A%2F%2Fsonarcloud.io&label=Sonar%20Cloud&style=for-the-badge&logo=sonarcloud)](https://sonarcloud.io/dashboard?id=open-template-hub_admin-ui-template)
 
-Web UI Template is a modern, responsive, and customizable web UI template for your business. It contains reusable components, theme color, and design support along with dark theme support.
+Admin UI Template is a modern, responsive, and customizable admin UI template for your business. It contains reusable components, theme color, and design support along with dark theme support.
 
 <h3 align="center">
   For demo click the image below ⬇️
@@ -34,7 +34,7 @@ Web UI Template is a modern, responsive, and customizable web UI template for yo
 
 Deploy this template to Heroku
 
-[![Deploy](https://img.shields.io/badge/Deploy_to-Heroku-7056bf.svg?style=for-the-badge&logo=heroku)](https://heroku.com/deploy?template=https://github.com/open-template-hub/web-ui-template)
+[![Deploy](https://img.shields.io/badge/Deploy_to-Heroku-7056bf.svg?style=for-the-badge&logo=heroku)](https://heroku.com/deploy?template=https://github.com/open-template-hub/admin-ui-template)
 
 ### 2. Start with UI Generator
 
@@ -46,7 +46,7 @@ Create your UI with UI Generator Package
 
 Use this repository as a Template
 
-[![GitHubTemplate](https://img.shields.io/badge/GitHub-Template-24292e.svg?style=for-the-badge&logo=github)](https://github.com/open-template-hub/web-ui-template/generate)
+[![GitHubTemplate](https://img.shields.io/badge/GitHub-Template-24292e.svg?style=for-the-badge&logo=github)](https://github.com/open-template-hub/admin-ui-template/generate)
 
 ## Installations
 
@@ -167,9 +167,9 @@ Refer to **[OUTDATED.md](docs/OUTDATED.md)** to see outdated npm packages and up
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/furknyavuz"><img src="https://avatars0.githubusercontent.com/u/2248168?s=460&u=435ef6ade0785a7a135ce56cae751fb3ade1d126&v=4" width="100px;" alt=""/><br /><sub><b>Furkan Yavuz</b></sub></a><br /><a href="https://github.com/open-template-hub/web-ui-template/issues/created_by/furknyavuz" title="Answering Questions">💬</a> <a href="https://github.com/open-template-hub/web-ui-template/commits?author=furknyavuz" title="Documentation">📖</a> <a href="https://github.com/open-template-hub/web-ui-template/pulls?q=is%3Apr+reviewed-by%3Afurknyavuz" title="Reviewed Pull Requests">👀</a></td>
-    <td align="center"><a href="https://github.com/fatihturker"><img src="https://avatars1.githubusercontent.com/u/2202179?s=460&u=261b1129e7106c067783cb022ab9999aad833bdc&v=4" width="100px;" alt=""/><br /><sub><b>Fatih Turker</b></sub></a><br /><a href="https://github.com/open-template-hub/web-ui-template/issues/created_by/fatihturker" title="Answering Questions">💬</a> <a href="https://github.com/open-template-hub/web-ui-template/commits?author=fatihturker" title="Documentation">📖</a> <a href="https://github.com/open-template-hub/web-ui-template/pulls?q=is%3Apr+reviewed-by%3Afatihturker" title="Reviewed Pull Requests">👀</a></td>
-    <td align="center"><a href="https://github.com/mertlsarac"><img src="https://avatars1.githubusercontent.com/u/38442589?s=400&u=aa3cda11724fc297a0bfa6beb35c9be81687cf3c&v=4" width="100px;" alt=""/><br /><sub><b>Mert Sarac</b></sub></a><br /><a href="https://github.com/open-template-hub/web-ui-template/issues/created_by/mertlsarac" title="Answering Questions">💬</a> <a href="https://github.com/open-template-hub/web-ui-template/commits?author=mertlsarac" title="Documentation">📖</a> <a href="https://github.com/open-template-hub/web-ui-template/pulls?q=is%3Apr+reviewed-by%3Amertlsarac" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://github.com/furknyavuz"><img src="https://avatars0.githubusercontent.com/u/2248168?s=460&u=435ef6ade0785a7a135ce56cae751fb3ade1d126&v=4" width="100px;" alt=""/><br /><sub><b>Furkan Yavuz</b></sub></a><br /><a href="https://github.com/open-template-hub/admin-ui-template/issues/created_by/furknyavuz" title="Answering Questions">💬</a> <a href="https://github.com/open-template-hub/admin-ui-template/commits?author=furknyavuz" title="Documentation">📖</a> <a href="https://github.com/open-template-hub/admin-ui-template/pulls?q=is%3Apr+reviewed-by%3Afurknyavuz" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://github.com/fatihturker"><img src="https://avatars1.githubusercontent.com/u/2202179?s=460&u=261b1129e7106c067783cb022ab9999aad833bdc&v=4" width="100px;" alt=""/><br /><sub><b>Fatih Turker</b></sub></a><br /><a href="https://github.com/open-template-hub/admin-ui-template/issues/created_by/fatihturker" title="Answering Questions">💬</a> <a href="https://github.com/open-template-hub/admin-ui-template/commits?author=fatihturker" title="Documentation">📖</a> <a href="https://github.com/open-template-hub/admin-ui-template/pulls?q=is%3Apr+reviewed-by%3Afatihturker" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://github.com/mertlsarac"><img src="https://avatars1.githubusercontent.com/u/38442589?s=400&u=aa3cda11724fc297a0bfa6beb35c9be81687cf3c&v=4" width="100px;" alt=""/><br /><sub><b>Mert Sarac</b></sub></a><br /><a href="https://github.com/open-template-hub/admin-ui-template/issues/created_by/mertlsarac" title="Answering Questions">💬</a> <a href="https://github.com/open-template-hub/admin-ui-template/commits?author=mertlsarac" title="Documentation">📖</a> <a href="https://github.com/open-template-hub/admin-ui-template/pulls?q=is%3Apr+reviewed-by%3Amertlsarac" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
 
