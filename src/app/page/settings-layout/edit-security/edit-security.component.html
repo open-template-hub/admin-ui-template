@@ -39,13 +39,13 @@
           </div>
 
           <div class="section-submit">
-            <app-button *ngIf="twoFactorVerificationState === 'request' || twoFactorVerificationState === 'verify'"
-                        text="Submit"></app-button>
-            <app-button (click)="retry()" *ngIf="twoFactorVerificationState === 'expired'"
+            <oth-button *ngIf="twoFactorVerificationState === 'request' || twoFactorVerificationState === 'verify'"
+                        text="Submit"></oth-button>
+            <oth-button (click)="retry()" *ngIf="twoFactorVerificationState === 'expired'"
                         [buttonClasses]="['information-button']"
-                        text="Retry"></app-button>
-            <app-button (click)="deleteSubmittedPhoneNumber()" *ngIf="twoFactorVerificationState === 'verified'"
-                        [buttonClasses]="['error-background-color']" text="Delete"></app-button>
+                        text="Retry"></oth-button>
+            <oth-button (click)="deleteSubmittedPhoneNumber()" *ngIf="twoFactorVerificationState === 'verified'"
+                        [buttonClasses]="['error-background-color']" text="Delete"></oth-button>
           </div>
         </form>
       </ng-template>
