@@ -9,7 +9,6 @@ import { AuthenticationService } from '../../../../service/auth/authentication.s
 import { FileStorageService } from '../../../../service/file-storage/file-storage.service';
 import { LoadingService } from '../../../../service/loading/loading.service';
 import { NotificationService } from '../../../../service/notification/notification.service';
-import { ProductService } from '../../../../service/product/product.service';
 
 @Component( {
   selector: 'app-landing-layout-top-nav',
@@ -43,7 +42,6 @@ export class LandingLayoutTopNavComponent {
       private loadingService: LoadingService,
       private authenticationService: AuthenticationService,
       private fileStorageService: FileStorageService,
-      private productService: ProductService,
       private notificationService: NotificationService
   ) {
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
@@ -57,11 +55,7 @@ export class LandingLayoutTopNavComponent {
         this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
       }
     } );
-
-    this.productService.premiumProducts.subscribe( product => {
-      this.userIsPremium = product?.name !== undefined;
-    } );
-
+    
     this.notificationService.notifications.subscribe( notifications => {
       this.notifications = notifications.filter( notification => !notification.read );
     } );

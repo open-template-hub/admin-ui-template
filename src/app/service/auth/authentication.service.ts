@@ -2,6 +2,7 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { APIGetUsersAdapter, APIGetUsersResponseModel } from 'src/app/APIModels/APIResponseModels/APIGetUsersResponseModel';
 import { environment } from '../../../environments/environment';
 import { DarkLightSettings, DEFAULT_THEME } from '../../data/theme/theme.data';
 import { AuthToken } from '../../model/auth/auth-token.model';
@@ -22,7 +23,10 @@ export class AuthenticationService {
       private http: HttpClient,
       private themeService: ThemeService,
       private socketService: SocketService,
-      private browserLocaleService: BrowserLocaleService
+      private browserLocaleService: BrowserLocaleService,
+
+      // adapters
+      private getUsersAdapter: APIGetUsersAdapter
   ) {
     const currentUserStorageItem = localStorage.getItem( 'currentUser' )
         ? localStorage.getItem( 'currentUser' )
@@ -240,4 +244,33 @@ export class AuthenticationService {
     );
   }
 
+  getUsers(username?: string, offset?: number): Observable<APIGetUsersResponseModel> {
+    let url = `${environment.serverUrl}/auth/users`;
+
+    let queryParams: any = {}
+
+    if(username) {
+      queryParams.username = username
+    }
+  
+    if(offset) {
+      queryParams.offset = offset
+    }
+
+    Object.keys(queryParams).forEach( (value: any, index: number) => {
+      if(index === 0) {
+        url += '?'
+      } else {
+        url += '&'
+      }
+
+      url += `${value}=${queryParams[value]}`
+    });
+
+    return this.http.get<any>(url).pipe(
+      map( res => { 
+        return this.getUsersAdapter.adapt(res) 
+      } )
+    )
+  }
 }

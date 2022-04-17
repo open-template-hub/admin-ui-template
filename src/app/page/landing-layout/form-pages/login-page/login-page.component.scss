@@ -1,1 +1,6 @@
 @use '../../landing-layout.component';
+
+// overwrite .section
+.section {
+    margin-top: 0;
+}
