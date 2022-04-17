@@ -41,16 +41,14 @@
         @include util.default-border-radius;
         @include util.default-shadow;
 
-        & i {
-          color: var(--color);
-        }
-      }
-
-      & .username-filter-wrapper {
         display: flex;
         align-items: center;
         margin-left: 25px;
         padding-left: 25px;
+
+        & i {
+          color: var(--color);
+        }
 
         & p {
           white-space: nowrap;
