@@ -2,7 +2,8 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { APIGetUsersAdapter, APIGetUsersResponseModel } from 'src/app/APIModels/APIResponseModels/APIGetUsersResponseModel';
+import { GetUsersResponseAdapter } from 'src/app/adapter/get-users-response.adapter';
+import { GetUsersResponseModel } from 'src/app/model/response/get-users-response.model';
 import { environment } from '../../../environments/environment';
 import { DarkLightSettings, DEFAULT_THEME } from '../../data/theme/theme.data';
 import { AuthToken } from '../../model/auth/auth-token.model';
@@ -26,7 +27,7 @@ export class AuthenticationService {
       private browserLocaleService: BrowserLocaleService,
 
       // adapters
-      private getUsersAdapter: APIGetUsersAdapter
+      private getUsersAdapter: GetUsersResponseAdapter
   ) {
     const currentUserStorageItem = localStorage.getItem( 'currentUser' )
         ? localStorage.getItem( 'currentUser' )
@@ -244,7 +245,7 @@ export class AuthenticationService {
     );
   }
 
-  getUsers(username?: string, offset?: number): Observable<APIGetUsersResponseModel> {
+  getUsers(username?: string, offset?: number): Observable<GetUsersResponseModel> {
     let url = `${environment.serverUrl}/auth/users`;
 
     let queryParams: any = {}

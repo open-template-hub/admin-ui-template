@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { APIGetUsersMetaModel, APIGetUsersUserResponseModel } from 'src/app/APIModels/APIResponseModels/APIGetUsersResponseModel';
+import { GetUsersMetaModel, GetUsersUserResponseModel } from 'src/app/model/response/get-users-response.model';
 
 @Component({
   selector: 'app-users-page',
@@ -7,8 +7,8 @@ import { APIGetUsersMetaModel, APIGetUsersUserResponseModel } from 'src/app/APIM
   styleUrls: ['./users-page.component.scss']
 })
 export class UsersPageComponent {
-  users: APIGetUsersUserResponseModel[];
-  meta: APIGetUsersMetaModel;
+  users: GetUsersUserResponseModel[];
+  meta: GetUsersMetaModel;
 
   constructor() { /* intentionally blank */ }
 }

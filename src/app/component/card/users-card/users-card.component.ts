@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { APIGetUsersMetaModel, APIGetUsersUserResponseModel } from 'src/app/APIModels/APIResponseModels/APIGetUsersResponseModel';
+import { GetUsersMetaModel, GetUsersUserResponseModel } from 'src/app/model/response/get-users-response.model';
 import { AuthenticationService } from 'src/app/service/auth/authentication.service';
 
 @Component({
@@ -8,8 +8,8 @@ import { AuthenticationService } from 'src/app/service/auth/authentication.servi
   styleUrls: ['./users-card.component.scss']
 })
 export class UsersCardComponent implements OnInit {
-  users: APIGetUsersUserResponseModel[];
-  meta: APIGetUsersMetaModel;
+  users: GetUsersUserResponseModel[];
+  meta: GetUsersMetaModel;
 
   hasNextPage: boolean
   hasPreviousPage: boolean

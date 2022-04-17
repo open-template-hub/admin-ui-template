@@ -1,3 +1,2 @@
-export class APIBaseResponseModel {
-    constructor() { /* intentionally blank */ }
+export interface APIBaseResponseModel {
 }
