@@ -1,7 +1,9 @@
-.users-page {
+@media only screen and (min-width: 1000px) {
+  .users-page {
     padding-top: 120px;
     margin-left: 60px;
     margin-right: 60px;
+}
 }
 
 @media only screen and (max-width: 999px) {

@@ -269,7 +269,7 @@ export class AuthenticationService {
 
     return this.http.get<any>(url).pipe(
       map( res => { 
-        console.log(res); return this.getUsersAdapter.adapt(res) 
+        return this.getUsersAdapter.adapt(res) 
       } )
     )
   }

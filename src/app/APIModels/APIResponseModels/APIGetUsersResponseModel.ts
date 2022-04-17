@@ -9,7 +9,7 @@ export class APIGetUsersResponseModel implements APIBaseResponseModel {
     constructor(
         item: any
     ) {
-        this.users = item.users.map( user => new APIGetUsersUserResponseModel(user) )
+        this.users = item.users.map( (user: any) => new APIGetUsersUserResponseModel(user) )
         this.meta = item.meta
     }
 }
@@ -43,7 +43,6 @@ export class APIGetUsersMetaModel {
   })
 export class APIGetUsersAdapter implements Adapter<APIGetUsersResponseModel> {
     adapt(item: any): APIGetUsersResponseModel {
-        console.log(item);
         return new APIGetUsersResponseModel( item );
     }
 }
