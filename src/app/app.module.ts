@@ -97,7 +97,6 @@ import { DashboardLayoutComponent } from './page/dashboard-layout/dashboard-layo
 import { DashboardPageComponent } from './page/dashboard-layout/dashboard-page/dashboard-page.component';
 import { MyProfilePageComponent } from './page/dashboard-layout/my-profile-page/my-profile-page.component';
 import { NotificationsPageComponent } from './page/dashboard-layout/notifications-page/notifications-page.component';
-import { PremiumPageComponent } from './page/dashboard-layout/premium-page/premium-page.component';
 import { AboutUsPageComponent } from './page/landing-layout/about-us-page/about-us-page.component';
 import {
   BlogContentPageComponent
@@ -117,7 +116,6 @@ import { LoginPageComponent } from './page/landing-layout/form-pages/login-page/
 import {
   ResetPasswordPageComponent
 } from './page/landing-layout/form-pages/reset-password-page/reset-password-page.component';
-import { SignUpPageComponent } from './page/landing-layout/form-pages/sign-up-page/sign-up-page.component';
 import {
   TwoFactorAuthenticationPageComponent
 } from './page/landing-layout/form-pages/two-factor-authentication-page/two-factor-authentication-page.component';
@@ -154,6 +152,8 @@ import {
   ExternalRedirectPageComponent
 } from './page/splash-layout/external-redirect-page/external-redirect-page.component';
 import { SplashLayoutComponent } from './page/splash-layout/splash-layout.component';
+import { UsersCardComponent } from './component/card/users-card/users-card.component';
+import { UsersPageComponent } from './page/dashboard-layout/users-page/users-page.component';
 
 FullCalendarModule.registerPlugins( [
   dayGridPlugin,
@@ -166,7 +166,6 @@ FullCalendarModule.registerPlugins( [
     HomePageComponent,
     LoginPageComponent,
     DashboardPageComponent,
-    SignUpPageComponent,
     SignUpSuccessPageComponent,
     VerifyAccountPageComponent,
     LandingLayoutComponent,
@@ -247,8 +246,9 @@ FullCalendarModule.registerPlugins( [
     EditSecurityComponent,
     TwoFactorAuthenticationPageComponent,
     AnalyticsEventCardComponent,
-    PremiumPageComponent,
     NotificationsPageComponent,
+    UsersCardComponent,
+    UsersPageComponent,
   ],
   imports: [
     BrowserModule,

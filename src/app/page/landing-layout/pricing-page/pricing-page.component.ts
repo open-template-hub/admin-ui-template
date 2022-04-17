@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProductService } from 'src/app/service/product/product.service';
 import { URLS } from '../../../data/navigation/navigation.data';
 import { PRODUCT_LINES } from '../../../data/product/product.data';
 import { PRODUCT_RIBBONS } from '../../../data/ribbon/ribbon.data';
 import { Product, ProductLine } from '../../../model/product/product.model';
-import { ProductService } from '../../../service/product/product.service';
 
 @Component( {
   selector: 'app-pricing-page',

@@ -1,0 +1,11 @@
+.users-page {
+    padding-top: 120px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+@media only screen and (max-width: 999px) {
+    .users-page {
+      padding-top: 40px;
+    }
+  }
