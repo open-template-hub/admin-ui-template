@@ -21,7 +21,7 @@
     <ng-template #bodyTemplate>
         <div *ngIf="users" class="body">
         <div *ngFor="let user of users; let last = last; let i = index" class="row" id="target{{ i + 1 }}">
-            <img [src]="'./assets/common/activity.png'" alt="activity icon">
+            <img [src]="'./assets/common/profile-img.png'" alt="activity icon">
             <div class="column">
                 <p class=message>{{ user.username }}</p>
             </div>
