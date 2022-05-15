@@ -15,8 +15,6 @@ export class ProductService {
   URLS = URLS;
 
   public product: Observable<Product>;
-  public premiumProducts: Observable<any>;
-  public premiumProductsSubject: BehaviorSubject<any>;
   private productSubject: BehaviorSubject<Product>;
   private productStorageKey = 'product';
   private premiumProductsStorageKey = 'premiumProducts';
@@ -35,9 +33,6 @@ export class ProductService {
 
     this.productSubject = new BehaviorSubject<Product>( productStorageItem );
     this.product = this.productSubject.asObservable();
-
-    this.premiumProductsSubject = new BehaviorSubject<any>( premiumProductsStorageItem );
-    this.premiumProducts = this.premiumProductsSubject.asObservable();
 
     this.authenticationService.currentUser.subscribe( currentUser => {
       if ( !currentUser ) {
@@ -80,11 +75,9 @@ export class ProductService {
 
   logout() {
     localStorage.removeItem( this.productStorageKey );
-    this.premiumProductsSubject.next( undefined );
   }
 
   private setPremiumProduct( premiumProducts: any ) {
     localStorage.setItem( this.premiumProductsStorageKey, JSON.stringify( premiumProducts ) );
-    this.premiumProductsSubject.next( premiumProducts );
   }
 }

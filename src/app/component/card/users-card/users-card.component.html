@@ -15,16 +15,63 @@
                 <i [class]="'fas fa-search fa-fw'" aria-hidden="true"></i>
                 <input #searchArea (keyup)="searchWithUsernameKeyup($event)" placeholder="Username..." type="text">
             </div>
+            <div class="category-filter-wrapper">
+                <i aria-hidden="true" class="fas fa-bars fa-lg fa-fw"></i>
+                <select (change)="changeRole($event)">
+                    <option *ngFor="let role of roles">
+                        {{ role }}
+                    </option>
+                </select>
+            </div>
+            <div class="category-filter-wrapper">
+                <i aria-hidden="true" class="fas fa-bars fa-lg fa-fw"></i>
+                <select (change)="changeVerifiedOptions($event)">
+                    <option *ngFor="let verifiedOption of verifiedOptions">
+                        {{ verifiedOption }}
+                    </option>
+                </select>
+            </div>
+            <div class="category-filter-wrapper">
+                <i aria-hidden="true" class="fas fa-bars fa-lg fa-fw"></i>
+                <select (change)="changeOauthOptions($event)">
+                    <option *ngFor="let oauthOption of oauthOptions">
+                        {{ oauthOption }}
+                    </option>
+                </select>
+            </div>
+            <div class="category-filter-wrapper">
+                <i aria-hidden="true" class="fas fa-bars fa-lg fa-fw"></i>
+                <select (change)="changeTwoFAOptions($event)">
+                    <option *ngFor="let twoFAOption of twoFAOptions">
+                        {{ twoFAOption }}
+                    </option>
+                </select>
+            </div>
         </div>
         </div>
     </ng-template>
     <ng-template #bodyTemplate>
         <div *ngIf="users" class="body">
-        <div *ngFor="let user of users; let last = last; let i = index" class="row" id="target{{ i + 1 }}">
-            <img [src]="'./assets/common/profile-img.png'" alt="activity icon">
-            <div class="column">
-                <p class=message>{{ user.username }}</p>
+        <div *ngFor="let user of users; let last = last; let i = index" class="row">
+            <div class="row-info">
+                <div class="field-wrapper">
+                    <img [src]="'./assets/common/profile-img.png'" alt="activity icon">
+                    <p class="username">{{ user.username }}</p>
+                </div>
+                <div class="field-wrapper with-icon">
+                    <i *ngIf="user.verified" aria-hidden="true" class="fa-solid fa-envelope-circle-check"></i>
+                    <i *ngIf="!user.verified" aria-hidden="true" class="fa-solid fa-envelope"></i>
+                    <p *ngIf="user.email" class="email">{{ user.email }}</p>
+                    <p *ngIf="user.external_user_email" class="email">{{ user.external_user_email }}</p>
+                </div>
+                <div class="field-wrapper with-icon" *ngIf="user.phonenumber">
+                    <i *ngIf="user.phonenumber" aria-hidden="true" class="fa-solid fa-mobile"></i>
+                    <i *ngIf="user.twofactorenabled" aria-hidden="true" class="fa-solid fa-key"></i>
+                    <p class="phoneNumber">{{ user.phonenumber }}</p>
+                </div>
+                <p>{{ user.social_login_key }}</p>
             </div>
+            <i (click)="editProfileTapped(user.username)" aria-hidden="true" class="fa-solid fa-pen-to-square edit-button"></i>
         </div>
         <p *ngIf="users.length === 0" class="empty-body">
             No results found.

@@ -1,3 +1,4 @@
+import { query } from '@angular/animations';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
@@ -245,10 +246,26 @@ export class AuthenticationService {
     );
   }
 
-  getUsers(username?: string, offset?: number): Observable<GetUsersResponseModel> {
+  getUsers(role?: string, verified?: string, oauth?: string, twoFA?: string, username?: string, offset?: number): Observable<GetUsersResponseModel> {
     let url = `${environment.serverUrl}/auth/users`;
 
     let queryParams: any = {}
+
+    if(role) {
+      queryParams.role = role
+    }
+
+    if(verified) {
+      queryParams.verified = verified
+    }
+
+    if(oauth) {
+      queryParams.oauth = oauth
+    }
+
+    if(twoFA) {
+      queryParams.twoFA = twoFA
+    }
 
     if(username) {
       queryParams.username = username
@@ -269,7 +286,7 @@ export class AuthenticationService {
     });
 
     return this.http.get<any>(url).pipe(
-      map( res => { 
+      map( res => {
         return this.getUsersAdapter.adapt(res) 
       } )
     )

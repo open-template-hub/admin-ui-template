@@ -5,7 +5,7 @@
       <h2 class="side-nav-brand-text">{{ BRAND.name }}</h2>
     </a>
     <a *ngIf="currentUser" [routerLink]="URLS.dashboard.myProfile">
-      <img [class.premium-border]="userIsPremium" [src]="profileImg" alt="profile img"
+      <img [src]="profileImg" alt="profile img"
            class="profile-img-small yellow-theme"/>
       <span *ngIf="sideNavClosed === 'false'">
         My Profile

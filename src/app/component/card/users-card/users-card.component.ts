@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { URLS } from 'src/app/data/navigation/navigation.data';
 import { GetUsersMetaModel, GetUsersUserResponseModel } from 'src/app/model/response/get-users-response.model';
 import { AuthenticationService } from 'src/app/service/auth/authentication.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-users-card',
@@ -10,6 +13,7 @@ import { AuthenticationService } from 'src/app/service/auth/authentication.servi
 export class UsersCardComponent implements OnInit {
   users: GetUsersUserResponseModel[];
   meta: GetUsersMetaModel;
+  URLS = URLS
 
   hasNextPage: boolean
   hasPreviousPage: boolean
@@ -17,16 +21,42 @@ export class UsersCardComponent implements OnInit {
 
   filteredUsername;
 
+  roles = ["All Roles", "Admin", "Default"];
+  selectedRole = "All"
+
+  verifiedOptions = ["Verified/Unverified", "Unverified", "Verified"]
+  selectedVerified;
+  
+  oauthOptions = [];
+  selectedOauth;
+
+  twoFAOptions = ["2FA Enabled/Disabled", "2FA Enabled", "2FA Disabled"]
+  selectedTwoFA;
+
   constructor(
-    private authenticationService: AuthenticationService
-  ) { }
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) { 
+    this.oauthOptions = [
+      "Social/OTH Accounts",
+      "Exclude Socials",
+      environment.oauth.twitter.tag,
+      environment.oauth.google.tag,
+      environment.oauth.facebook.tag === '' ? environment.oauth.facebook.tag : "Facebook, not supported",
+      environment.oauth.linkedin.tag,
+      environment.oauth.twitch.tag,
+      environment.oauth.github.tag,
+      environment.oauth.dribbble.tag,
+      environment.oauth.reddit.tag
+    ]
+  }
 
   ngOnInit(): void {
     this.fetchUsers()
   }
 
   fetchUsers(offset?: number, callback?: ( _: void ) => void) {
-    this.authenticationService.getUsers(this.filteredUsername, offset).subscribe( response => {
+    this.authenticationService.getUsers(this.selectedRole, this.selectedVerified, this.selectedOauth, this.selectedTwoFA, this.filteredUsername, offset).subscribe( response => {
       this.users = response.users;
       this.meta = response.meta;
 
@@ -82,5 +112,66 @@ export class UsersCardComponent implements OnInit {
     this.fetchUsers(undefined, () => {
       this.currentPageCount = 1;
     })
+  }
+
+  changeRole(event: any) {
+    this.selectedRole = this.roles[event.srcElement.selectedIndex];
+
+    this.fetchUsers(undefined, () => {
+      this.currentPageCount = 1
+    })
+  }
+
+  changeVerifiedOptions(event: any) {
+    const isVerified = this.verifiedOptions[event.srcElement.selectedIndex];
+
+    if(isVerified === 'Verified') {
+      this.selectedVerified = 'true'
+    } else if(isVerified === 'Unverified') {
+      this.selectedVerified = 'false'
+    } else {
+      this.selectedVerified = undefined
+    }
+
+    this.fetchUsers(undefined, () => {
+      this.currentPageCount = 1;
+    })
+  }
+
+  changeOauthOptions(event: any) {
+    const oauth = this.oauthOptions[event.srcElement.selectedIndex];
+
+    if(oauth === 'All') {
+      this.selectedOauth = undefined
+    } else if(oauth === 'Exclude Socials') {
+      this.selectedOauth = 'exclude'
+    } else {
+      this.selectedOauth = oauth
+    }
+
+    this.fetchUsers(undefined, () => {
+      this.currentPageCount = 1;
+    })
+  }
+
+  changeTwoFAOptions(event: any) {
+    const twoFA = this.twoFAOptions[event.srcElement.selectedIndex];;
+
+    if(twoFA === 'All') {
+      this.selectedTwoFA = undefined;
+    }
+    else if(twoFA === '2FA Enabled') {
+      this.selectedTwoFA = 'true';
+    } else {
+      this.selectedTwoFA = 'false';
+    }
+
+    this.fetchUsers(undefined, () => {
+      this.currentPageCount = 1;
+    })
+  }
+
+  editProfileTapped(username: string) {
+    this.router.navigate( [ URLS.settings.editOtherProfile + '/' + username ] );
   }
 }

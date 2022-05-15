@@ -1,0 +1,85 @@
+@use '../../../../styles/util/util';
+@use 'node_modules/@open-template-hub/card/styles/card/card';
+
+.edit-profile-page {
+  & h2 {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .edit-profile-card {
+
+    & .header {
+
+      & .profile-image-wrapper {
+        position: relative;
+        margin-top: -50px;
+        margin-left: auto;
+        margin-right: auto;
+        width: -webkit-fit-content;
+
+        & .edit-photo {
+          @include util.default-border-radius;
+
+          font-size: 15px;
+
+          color: var(--lighter);
+          background-color: var(--card);
+
+          position: absolute;
+          bottom: 6px;
+          right: 0;
+          border: 2px solid var(--shadow-lighter);
+          padding: 5px 8px;
+        }
+      }
+    }
+
+    & .image-cropper-wrapper {
+      margin-left: auto;
+      margin-right: auto;
+
+      & image-cropper {
+
+        border: 2px solid var(--shadow-lighter);
+
+        margin-left: auto;
+        margin-right: auto;
+
+        max-width: 400px;
+
+        padding: 0
+      }
+    }
+
+    & .body {
+      min-height: 265px;
+      padding: 10px 20px 20px;
+
+      & .section {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 999px) {
+  .edit-profile-page {
+    padding-top: 40px;
+
+    & h2 {
+      margin-top: 20px;
+    }
+
+    & .edit-profile-card {
+      & .header {
+        & .profile-image-wrapper {
+          & i {
+            top: 100px;
+            right: 5px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -13,17 +13,17 @@
     "lint": "ng lint",
     "sitemap": "node src/sitemap-generator.ts > seo/sitemap.xml",
     "ng": "ng",
-    "startLocal": "ng serve --configuration=local",
-    "startLocalFromIPhone": "ng serve --configuration=local --host 0.0.0.0 --disable-host-check true",
+    "startLocal": "ng serve --configuration=local --port 4201",
+    "startLocalFromIPhone": "ng serve --configuration=local --host 0.0.0.0 --disable-host-check true --port 4201",
     "startLocalToStagingApi": "ng serve --configuration=local-to-staging-api",
-    "startLocalFromIPhoneToStagingApi": "ng serve --configuration=local-to-staging-api --host 0.0.0.0 --disable-host-check true",
+    "startLocalFromIPhoneToStagingApi": "ng serve --configuration=local-to-staging-api --host 0.0.0.0 --disable-host-check true --port 4201",
     "startStaging": "node server.js --configuration=staging",
     "start": "node server.js --configuration=production",
     "outdated": "node src/dependency-checker.ts > docs/OUTDATED.md",
     "test": "ng test",
     "updateMessages": "ng extract-i18n && node ./src/messages-generator.js",
-    "serve:local:en": "ng serve -c=local",
-    "serve:local:fr": "ng serve -c=fr"
+    "serve:local:en": "ng serve -c=local --port 4201",
+    "serve:local:fr": "ng serve -c=fr --port 4201"
   },
   "dependencies": {
     "@angular/animations": "^13.3.3",
