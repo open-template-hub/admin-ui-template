@@ -115,7 +115,13 @@ export class UsersCardComponent implements OnInit {
   }
 
   changeRole(event: any) {
-    this.selectedRole = this.roles[event.srcElement.selectedIndex];
+    const role = this.roles[event.srcElement.selectedIndex];
+
+    if(role === 'All Roles') {
+      this.selectedRole = 'All';
+    } else {
+      this.selectedRole = role;
+    }
 
     this.fetchUsers(undefined, () => {
       this.currentPageCount = 1
@@ -141,7 +147,7 @@ export class UsersCardComponent implements OnInit {
   changeOauthOptions(event: any) {
     const oauth = this.oauthOptions[event.srcElement.selectedIndex];
 
-    if(oauth === 'All') {
+    if(oauth === 'Social/OTH Accounts') {
       this.selectedOauth = undefined
     } else if(oauth === 'Exclude Socials') {
       this.selectedOauth = 'exclude'
@@ -157,7 +163,7 @@ export class UsersCardComponent implements OnInit {
   changeTwoFAOptions(event: any) {
     const twoFA = this.twoFAOptions[event.srcElement.selectedIndex];;
 
-    if(twoFA === 'All') {
+    if(twoFA === '2FA Enabled/Disabled') {
       this.selectedTwoFA = undefined;
     }
     else if(twoFA === '2FA Enabled') {
