@@ -17,7 +17,6 @@ export class DashboardLayoutTopNavComponent {
   userInfo: any = {};
   loading = false;
   profileImg = PROFILE_IMG;
-  userIsPremium;
 
   searchResults = [];
 
@@ -54,10 +53,6 @@ export class DashboardLayoutTopNavComponent {
     );
 
     this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
-
-    this.productService.premiumProducts.subscribe( response => {
-      this.userIsPremium = response?.name !== undefined;
-    } );
   }
 
   @HostListener( 'document:click', [ '$event' ] )

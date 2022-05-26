@@ -26,8 +26,6 @@ export class ProfileCardComponent {
 
   @Input() photoUri: string = undefined;
 
-  @Input() userIsPremium;
-
   constructor() {
     // Intentionally blank
   }

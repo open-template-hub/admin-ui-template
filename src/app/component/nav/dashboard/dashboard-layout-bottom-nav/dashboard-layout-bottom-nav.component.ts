@@ -38,7 +38,6 @@ export class DashboardLayoutBottomNavComponent {
       private loadingService: LoadingService,
       private businessLogicService: BusinessLogicService,
       private fileStorageService: FileStorageService,
-      private productService: ProductService,
       private notificationService: NotificationService
   ) {
     this.authenticationService.currentUser.subscribe( currentUser => {
@@ -61,10 +60,6 @@ export class DashboardLayoutBottomNavComponent {
       if ( profileImg?.file?.data ) {
         this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
       }
-    } );
-
-    this.productService.premiumProducts.subscribe( product => {
-      this.userIsPremium = product?.name !== undefined;
     } );
 
     this.notificationService.notifications.subscribe( notifications => {

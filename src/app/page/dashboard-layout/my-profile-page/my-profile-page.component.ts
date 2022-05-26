@@ -24,7 +24,6 @@ export class MyProfilePageComponent implements OnDestroy {
   environment = environment;
   profileImg = PROFILE_IMG;
   loading = false;
-  userIsPremium;
 
   URLS = URLS;
 
@@ -71,10 +70,6 @@ export class MyProfilePageComponent implements OnDestroy {
       if ( profileImg?.file?.data ) {
         this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
       }
-    } );
-
-    this.productService.premiumProducts.subscribe( response => {
-      this.userIsPremium = response?.name !== undefined;
     } );
   }
 
