@@ -6,16 +6,14 @@
     class="profile-card">
   <!-- Header -->
   <ng-template #headerTemplate>
-    <div [class.yellow-theme]="userIsPremium" class="header">
+    <div class="header">
       <app-image-content-loader
           *ngIf="!employeePhotoLoaded"
           [imageContentLoaderClass]="'employee-photo'"></app-image-content-loader>
       <img
           (load)="setEmployeePhotoLoaded()"
-          [class.premium-border]="userIsPremium"
           [src]="photoUri ? photoUri : './assets/common/profile-img.png'"
           [style]="'display:' + (!employeePhotoLoaded ? 'none;' : 'block;')" alt="profile-img" class="profile-img"/>
-      <p *ngIf="userIsPremium" class="theme-color yellow-theme">(premium)</p>
       <p>@{{ user.username }}</p>
     </div>
   </ng-template>

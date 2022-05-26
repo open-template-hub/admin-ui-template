@@ -46,6 +46,10 @@ export class BusinessLogicService {
     } ) );
   }
 
+  getOtherUser(username: string) {
+    return this.http.get<any>( `${ environment.serverUrl }/user/other?username=${username}`);
+  }
+
   getUser( username: string ) {
     return this.http.get<any>( `${ environment.serverUrl }/user/public?username=${ username }` );
   }
@@ -64,6 +68,10 @@ export class BusinessLogicService {
 
   updateMyInfo( payload: any ) {
     return this.http.put<any>( `${ environment.serverUrl }/user/me`, { payload } );
+  }
+
+  updateOtherInfo(payload: any) {
+    return this.http.put<any>(`${ environment.serverUrl }/user/other`, payload);
   }
 
   logout() {

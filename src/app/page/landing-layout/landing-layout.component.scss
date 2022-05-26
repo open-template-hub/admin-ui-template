@@ -27,22 +27,6 @@
     padding: 25px;
     font-size: 17px;
 
-    & .social-login-wrapper {
-      & > * {
-        width: 100%;
-        margin: 0 0 10px;
-      }
-    }
-
-    & .auth-social-login-wrapper {
-      & > * {
-        flex: 1 0 21%;
-        margin: 5px;
-        max-width: 21%;
-        transition: opacity 800ms, visibility 800ms;
-      }
-    }
-
     & .more {
       font-size: 16px;
       height: 41px;

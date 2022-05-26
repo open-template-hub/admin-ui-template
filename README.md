@@ -123,7 +123,7 @@ In order to deploy and debug locally, run following configurations in order:
 If you run **WebStorm**'s **[env.run.xml](.run/env.run.xml)** configuration you will see following variables generated in **.env** file. Set them appropriately.
 
 ```applescript
-PORT=4200
+PORT=4202
 ```
 
 <br/>
@@ -195,3 +195,4 @@ The source code for this project is released under the [MIT License](LICENSE).
 
 
 <table align="right"><tr><td><a href="https://opentemplatehub.com"><img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/logo/brand-logo.png" width="50px" alt="oth"/></a></td><td><b>Open Template Hub © 2021</b></td></tr></table>
+

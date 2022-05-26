@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 import { Rate } from '../../../component/rate-bar/rate-bar.component';
 import { URLS } from '../../../data/navigation/navigation.data';
-import { PremiumProducts } from '../../../data/premium-products/premium-product.data';
 import { PROFILE_IMG } from '../../../data/profile/profile.data';
 import { AuthToken } from '../../../model/auth/auth-token.model';
 import { AuthenticationService } from '../../../service/auth/authentication.service';
@@ -12,9 +11,7 @@ import { BusinessLogicService } from '../../../service/business-logic/business-l
 import { FileStorageService } from '../../../service/file-storage/file-storage.service';
 import { InformationService } from '../../../service/information/information.service';
 import { LoadingService } from '../../../service/loading/loading.service';
-import { PaymentService } from '../../../service/payment/payment.service';
 import { ProductService } from '../../../service/product/product.service';
-import { ToastService } from '../../../service/toast/toast.service';
 
 @Component( {
   selector: 'app-dashboard-page',
@@ -28,7 +25,6 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   environment = environment;
   profileImg = PROFILE_IMG;
   loading = false;
-  userIsPremium;
   URLS = URLS;
 
   form: FormGroup;
@@ -43,8 +39,6 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
       private businessLogicService: BusinessLogicService,
       private fileStorageService: FileStorageService,
       private informationService: InformationService,
-      private toastService: ToastService,
-      private paymentService: PaymentService,
       private productService: ProductService
   ) {
     this.authenticationService.currentUser.subscribe( currentUser => {
@@ -61,7 +55,6 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     this.businessLogicService.me()
     .subscribe( userInfo => {
       this.userInfo = userInfo;
-      this.productService.checkProduct( PremiumProducts.premiumAccount );
       if ( !this.userInfo.payload ) {
         this.businessLogicService.createMyInfo()
         .subscribe( () => {
@@ -79,10 +72,6 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
       if ( profileImg?.file?.data ) {
         this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
       }
-    } );
-
-    this.productService.premiumProducts.subscribe( response => {
-      this.userIsPremium = response?.name !== undefined;
     } );
   }
 

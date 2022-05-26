@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { environmentCommon } from '../environments/environment-common';
 import { NAVIGATIONS } from './data/navigation/navigation.data';
 import { AuthGuard } from './guard/auth/auth.guard';
 import { NavigationInterceptor } from './interceptor/navigation/navigation.interceptor';
@@ -8,7 +7,7 @@ import { DashboardLayoutComponent } from './page/dashboard-layout/dashboard-layo
 import { DashboardPageComponent } from './page/dashboard-layout/dashboard-page/dashboard-page.component';
 import { MyProfilePageComponent } from './page/dashboard-layout/my-profile-page/my-profile-page.component';
 import { NotificationsPageComponent } from './page/dashboard-layout/notifications-page/notifications-page.component';
-import { PremiumPageComponent } from './page/dashboard-layout/premium-page/premium-page.component';
+import { UsersPageComponent } from './page/dashboard-layout/users-page/users-page.component';
 import { AboutUsPageComponent } from './page/landing-layout/about-us-page/about-us-page.component';
 import {
   BlogContentPageComponent
@@ -28,7 +27,6 @@ import { LoginPageComponent } from './page/landing-layout/form-pages/login-page/
 import {
   ResetPasswordPageComponent
 } from './page/landing-layout/form-pages/reset-password-page/reset-password-page.component';
-import { SignUpPageComponent } from './page/landing-layout/form-pages/sign-up-page/sign-up-page.component';
 import {
   TwoFactorAuthenticationPageComponent
 } from './page/landing-layout/form-pages/two-factor-authentication-page/two-factor-authentication-page.component';
@@ -42,7 +40,6 @@ import {
   PrivacyPolicyPageComponent
 } from './page/landing-layout/policy-pages/privacy-policy-page/privacy-policy-page.component';
 import { TermsPageComponent } from './page/landing-layout/policy-pages/terms-page/terms-page.component';
-import { PricingPageComponent } from './page/landing-layout/pricing-page/pricing-page.component';
 import { ProductPageComponent } from './page/landing-layout/product-page/product-page.component';
 import {
   MaintenancePageComponent
@@ -56,11 +53,11 @@ import {
 } from './page/landing-layout/raw-content-pages/verify-account-page/verify-account-page.component';
 import { SitemapPageComponent } from './page/landing-layout/sitemap-page/sitemap-page.component';
 import { StatusPageComponent } from './page/landing-layout/status-page/status-page.component';
+import { EditOtherProfilePageComponent } from './page/settings-layout/edit-other-profile-page/edit-other-profile-page.component';
 import { EditProfilePageComponent } from './page/settings-layout/edit-profile-page/edit-profile-page.component';
 import { EditSecurityComponent } from './page/settings-layout/edit-security/edit-security.component';
 import { EditThemePageComponent } from './page/settings-layout/edit-theme-page/edit-theme-page.component';
 import { SettingsLayoutComponent } from './page/settings-layout/settings-layout.component';
-import { CallbackPageComponent } from './page/splash-layout/callback-page/callback-page.component';
 import {
   ExternalRedirectPageComponent
 } from './page/splash-layout/external-redirect-page/external-redirect-page.component';
@@ -114,11 +111,6 @@ const routes: Routes = [
       {
         path: NAVIGATIONS.about.url,
         component: AboutUsPageComponent,
-        canActivate: [ NavigationInterceptor ],
-      },
-      {
-        path: NAVIGATIONS.signup.url,
-        component: SignUpPageComponent,
         canActivate: [ NavigationInterceptor ],
       },
       {
@@ -182,11 +174,6 @@ const routes: Routes = [
         canActivate: [ NavigationInterceptor ],
       },
       {
-        path: NAVIGATIONS.pricing.url + '/' + ':productLine' + '/' + ':product',
-        component: PricingPageComponent,
-        canActivate: [ NavigationInterceptor ],
-      },
-      {
         path: NAVIGATIONS.product.url + '/' + ':productLine' + '/' + ':product',
         component: ProductPageComponent,
         canActivate: [ NavigationInterceptor ],
@@ -200,57 +187,6 @@ const routes: Routes = [
         path: NAVIGATIONS.docs.url + '/:docTag' + '/' + ':docKey',
         component: DocsContentPageComponent,
         canActivate: [ NavigationInterceptor ],
-      },
-    ],
-  },
-  {
-    path: NAVIGATIONS.callback.url,
-    component: SplashLayoutComponent,
-    children: [
-      {
-        path: NAVIGATIONS.dribbble.url,
-        component: CallbackPageComponent,
-        data: { oauth: environmentCommon.website.dribbble },
-      },
-      {
-        path: NAVIGATIONS.facebook.url,
-        component: CallbackPageComponent,
-        data: { oauth: environmentCommon.website.facebook },
-      },
-      {
-        path: NAVIGATIONS.github.url,
-        component: CallbackPageComponent,
-        data: { oauth: environmentCommon.website.github },
-      },
-      {
-        path: NAVIGATIONS.google.url,
-        component: CallbackPageComponent,
-        data: { oauth: environmentCommon.website.google },
-      },
-      {
-        path: NAVIGATIONS.linkedin.url,
-        component: CallbackPageComponent,
-        data: { oauth: environmentCommon.website.linkedin },
-      },
-      {
-        path: NAVIGATIONS.reddit.url,
-        component: CallbackPageComponent,
-        data: { oauth: environmentCommon.website.reddit },
-      },
-      {
-        path: NAVIGATIONS.twitch.url,
-        component: CallbackPageComponent,
-        data: { oauth: environmentCommon.website.twitch },
-      },
-      {
-        path: NAVIGATIONS.twitter.url,
-        component: CallbackPageComponent,
-        data: { oauth: environmentCommon.website.twitter },
-      },
-      {
-        path: NAVIGATIONS.stripe.url,
-        component: CallbackPageComponent,
-        data: { payment: environmentCommon.website.stripe },
       },
     ],
   },
@@ -270,15 +206,15 @@ const routes: Routes = [
         canActivate: [ AuthGuard ],
       },
       {
-        path: NAVIGATIONS.premium.url,
-        component: PremiumPageComponent,
-        canActivate: [ AuthGuard ],
-      },
-      {
         path: NAVIGATIONS.notifications.url,
         component: NotificationsPageComponent,
         canActivate: [ AuthGuard ],
       },
+      {
+        path: NAVIGATIONS.users.url,
+        component: UsersPageComponent,
+        canActivate: [ AuthGuard ]
+      }
     ],
   },
   {
@@ -293,6 +229,11 @@ const routes: Routes = [
       {
         path: NAVIGATIONS.editProfile.url,
         component: EditProfilePageComponent,
+        canActivate: [ AuthGuard ]
+      },
+      {
+        path: NAVIGATIONS.editOtherProfile.url + '/:username',
+        component: EditOtherProfilePageComponent,
         canActivate: [ AuthGuard ]
       },
       {

@@ -40,7 +40,6 @@ import { EmployeeCardComponent } from './component/card/employee-card/employee-c
 import { FeatureCardComponent } from './component/card/feature-card/feature-card.component';
 import { PolicyCardComponent } from './component/card/policy-card/policy-card.component';
 import { PresentationCardComponent } from './component/card/presentation-card/presentation-card.component';
-import { PricingCardComponent } from './component/card/pricing-card/pricing-card.component';
 import { ProfileCardComponent } from './component/card/profile-card/profile-card.component';
 import { StatusCardComponent } from './component/card/status-card/status-card.component';
 import { TechStackCardComponent } from './component/card/tech-stack-card/tech-stack-card.component';
@@ -91,13 +90,12 @@ import { PresentationSwiperComponent } from './component/swiper/presentation-swi
 import { ScreenshotSwiperComponent } from './component/swiper/screenshot-swiper/screenshot-swiper.component';
 import { RequestInterceptor } from './interceptor/request/request.interceptor';
 import { ResponseInterceptor } from './interceptor/response/response.interceptor';
-import { OthComponent } from './oth/oth.component';
+import { AppComponent } from './app.component';
 import { DashboardLayoutComponent } from './page/dashboard-layout/dashboard-layout.component';
 
 import { DashboardPageComponent } from './page/dashboard-layout/dashboard-page/dashboard-page.component';
 import { MyProfilePageComponent } from './page/dashboard-layout/my-profile-page/my-profile-page.component';
 import { NotificationsPageComponent } from './page/dashboard-layout/notifications-page/notifications-page.component';
-import { PremiumPageComponent } from './page/dashboard-layout/premium-page/premium-page.component';
 import { AboutUsPageComponent } from './page/landing-layout/about-us-page/about-us-page.component';
 import {
   BlogContentPageComponent
@@ -117,7 +115,6 @@ import { LoginPageComponent } from './page/landing-layout/form-pages/login-page/
 import {
   ResetPasswordPageComponent
 } from './page/landing-layout/form-pages/reset-password-page/reset-password-page.component';
-import { SignUpPageComponent } from './page/landing-layout/form-pages/sign-up-page/sign-up-page.component';
 import {
   TwoFactorAuthenticationPageComponent
 } from './page/landing-layout/form-pages/two-factor-authentication-page/two-factor-authentication-page.component';
@@ -131,7 +128,6 @@ import {
   PrivacyPolicyPageComponent
 } from './page/landing-layout/policy-pages/privacy-policy-page/privacy-policy-page.component';
 import { TermsPageComponent } from './page/landing-layout/policy-pages/terms-page/terms-page.component';
-import { PricingPageComponent } from './page/landing-layout/pricing-page/pricing-page.component';
 import { ProductPageComponent } from './page/landing-layout/product-page/product-page.component';
 import {
   MaintenancePageComponent
@@ -149,11 +145,13 @@ import { EditProfilePageComponent } from './page/settings-layout/edit-profile-pa
 import { EditSecurityComponent } from './page/settings-layout/edit-security/edit-security.component';
 import { EditThemePageComponent } from './page/settings-layout/edit-theme-page/edit-theme-page.component';
 import { SettingsLayoutComponent } from './page/settings-layout/settings-layout.component';
-import { CallbackPageComponent } from './page/splash-layout/callback-page/callback-page.component';
 import {
   ExternalRedirectPageComponent
 } from './page/splash-layout/external-redirect-page/external-redirect-page.component';
 import { SplashLayoutComponent } from './page/splash-layout/splash-layout.component';
+import { UsersCardComponent } from './component/card/users-card/users-card.component';
+import { UsersPageComponent } from './page/dashboard-layout/users-page/users-page.component';
+import { EditOtherProfilePageComponent } from './page/settings-layout/edit-other-profile-page/edit-other-profile-page.component';
 
 FullCalendarModule.registerPlugins( [
   dayGridPlugin,
@@ -162,11 +160,10 @@ FullCalendarModule.registerPlugins( [
 
 @NgModule( {
   declarations: [
-    OthComponent,
+    AppComponent,
     HomePageComponent,
     LoginPageComponent,
     DashboardPageComponent,
-    SignUpPageComponent,
     SignUpSuccessPageComponent,
     VerifyAccountPageComponent,
     LandingLayoutComponent,
@@ -178,7 +175,6 @@ FullCalendarModule.registerPlugins( [
     LandingLayoutBottomNavComponent,
     FooterComponent,
     SplashLayoutComponent,
-    CallbackPageComponent,
     DashboardLayoutTopNavComponent,
     NotFoundPageComponent,
     MaintenancePageComponent,
@@ -193,8 +189,6 @@ FullCalendarModule.registerPlugins( [
     SearchComponent,
     RateBarComponent,
     EditThemePageComponent,
-    PricingPageComponent,
-    PricingCardComponent,
     TestimonialCardComponent,
     SettingsDropdownMenuComponent,
     EditThemePageComponent,
@@ -247,8 +241,10 @@ FullCalendarModule.registerPlugins( [
     EditSecurityComponent,
     TwoFactorAuthenticationPageComponent,
     AnalyticsEventCardComponent,
-    PremiumPageComponent,
     NotificationsPageComponent,
+    UsersCardComponent,
+    UsersPageComponent,
+    EditOtherProfilePageComponent,
   ],
   imports: [
     BrowserModule,
@@ -284,7 +280,7 @@ FullCalendarModule.registerPlugins( [
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true }
   ],
-  bootstrap: [ OthComponent ]
+  bootstrap: [ AppComponent ]
 } )
 export class AppModule {
 }
