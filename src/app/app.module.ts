@@ -152,6 +152,9 @@ import { SplashLayoutComponent } from './page/splash-layout/splash-layout.compon
 import { UsersCardComponent } from './component/card/users-card/users-card.component';
 import { UsersPageComponent } from './page/dashboard-layout/users-page/users-page.component';
 import { EditOtherProfilePageComponent } from './page/settings-layout/edit-other-profile-page/edit-other-profile-page.component';
+import { ProductsPageComponent } from './page/dashboard-layout/products-page/products.component';
+import { ProductsCardComponent } from './component/card/products-card/products-card.component';
+import { EditProductPageComponent } from './page/settings-layout/edit-product-page/edit-product-page.component';
 
 FullCalendarModule.registerPlugins( [
   dayGridPlugin,
@@ -245,6 +248,9 @@ FullCalendarModule.registerPlugins( [
     UsersCardComponent,
     UsersPageComponent,
     EditOtherProfilePageComponent,
+    ProductsPageComponent,
+    ProductsCardComponent,
+    EditProductPageComponent,
   ],
   imports: [
     BrowserModule,

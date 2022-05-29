@@ -73,6 +73,34 @@ export class ProductService {
     }
   }
 
+  getAllProducts(name?: string, offset?: number) {
+    let queryString = '';
+    let queryIndexCounter = 0;
+
+    if(name) {
+      queryString += queryIndexCounter === 0 ? `?` : `&`;
+      queryString += `name=${name}`;
+      queryIndexCounter += 1;
+    }
+
+    if(offset) {
+      queryString += queryIndexCounter === 0 ? `?` : `&`;
+      queryString += `offset=${offset}`;
+    }
+
+    return this.http.get<any>( `${environment.serverUrl}/product/all${queryString}`);
+  }
+
+  updateProduct(productId: string, name: string, description: string) {
+    const data: any = {
+      productId,
+      name,
+      description
+    }
+
+    return this.http.put<any>( `${environment.serverUrl}/product`, data );
+  }
+
   logout() {
     localStorage.removeItem( this.productStorageKey );
   }

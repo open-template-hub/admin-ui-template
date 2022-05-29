@@ -5,7 +5,7 @@ i {
   font-size: 24px;
 }
 
-.users-card {
+.products-card {
   font-size: 18px;
 
   & .header {
@@ -78,7 +78,7 @@ i {
         }
       }
 
-      & .username-filter-wrapper {
+      & .products-filter-wrapper {
         @include util.default-border-radius;
         @include util.default-shadow;
 
@@ -149,6 +149,7 @@ i {
   
             & p {
               padding-left: 8px;
+              word-break: normal;
             }
           }
   
@@ -233,14 +234,14 @@ i {
 
 @media only screen and (max-width: 999px) {
   p, i, select, ::placeholder {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   i {
     font-size: 16px;
   }
 
-  .users-card {
+  .products-card {
     & .header {
       & .filters-wrapper {
         flex-direction: column;
@@ -259,7 +260,6 @@ i {
       & .row {
         padding-left: 0;
         padding-right: 0;
-        flex-direction: column;
 
         & .row-info {
           & img {

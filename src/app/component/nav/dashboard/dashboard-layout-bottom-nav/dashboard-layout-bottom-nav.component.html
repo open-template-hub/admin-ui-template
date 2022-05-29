@@ -1,35 +1,52 @@
 <nav class="bottom-nav">
-  <a (click)="settingsOpened = false" *ngIf="settingsOpened" href="javascript:void(0)">
+  <!--back buttons-->
+  <a (click)="settingsOpened = false; moreOpened = true" *ngIf="settingsOpened" href="javascript:void(0)">
     <i [class]="'fas fa-chevron-left fa-fw'" aria-hidden="true"></i>
     <span> Back </span>
   </a>
-  <a *ngIf="!settingsOpened"
+  <a (click)="moreOpened = false" *ngIf="moreOpened" href="javascript:void(0)">
+    <i [class]="'fas fa-chevron-left fa-fw'" aria-hidden="true"></i>
+    <span> Back </span>
+  </a>
+  <!---->
+
+  <!--Items-->
+  <a *ngIf="!settingsOpened && !moreOpened"
      [routerLink]="URLS.dashboard.root">
     <i [class]="'fas fa-clipboard-list fa-fw'" aria-hidden="true"></i>
     <span> Dashboard </span>
   </a>
-  <a *ngIf="!settingsOpened" [routerLink]="URLS.dashboard.users">
+  <a *ngIf="!settingsOpened && !moreOpened" [routerLink]="URLS.dashboard.users">
     <i [class]="'fas fa-solid fa-users fa-fw'" aria-hidden="true"></i>
     <span> Users </span>
   </a>
-  <a *ngIf="!settingsOpened" [routerLink]="URLS.dashboard.notifications">
+  <a *ngIf="!settingsOpened && !moreOpened" [routerLink]="URLS.dashboard.products">
+    <i [class]="'fas fa-solid fa-cubes fa-fw'" aria-hidden="true"></i>
+    <span> Products </span>
+  </a>
+  <a (click)="moreOpened = true" *ngIf="!moreOpened && !settingsOpened" href="javascript:void(0)">
+    <i [class]="'fas fa-solid fa-angle-right fa-fw'" aria-hidden="true"></i>
+    <span> More </span>
+  </a>
+  <a *ngIf="!moreOpened && !settingsOpened"
+  [routerLink]="URLS.dashboard.myProfile">
+    <img [class.premium-border]="userIsPremium" [src]="profileImg" alt="profile img"
+          class="profile-img-small yellow-theme"/>
+    <span> My Profile </span>
+  </a>
+  <!---->
+
+  <a *ngIf="moreOpened" [routerLink]="URLS.dashboard.notifications">
     <div *ngIf="notifications.length > 0" [class.smaller-font]="notifications.length > 9" class="notifications">
       {{ notifications.length > 9 ? '9+' : notifications.length }}
     </div>
     <i [class]="'fas fa-bell fa-fw'" aria-hidden="true"></i>
     <span> Notifications </span>
   </a>
-  <a (click)="settingsOpened = true" *ngIf="!settingsOpened"
+  <a (click)="settingsOpened = true; moreOpened = false" *ngIf="moreOpened"
      href="javascript:void(0)">
     <i [class]="'fas fa-cog fa-fw'" aria-hidden="true"></i>
     <span> Settings </span>
-  </a>
-
-  <a *ngIf="!settingsOpened"
-     [routerLink]="URLS.dashboard.myProfile">
-    <img [class.premium-border]="userIsPremium" [src]="profileImg" alt="profile img"
-         class="profile-img-small yellow-theme"/>
-    <span> My Profile </span>
   </a>
 
   <a *ngIf="settingsOpened" [routerLink]="URLS.settings.editProfile">
