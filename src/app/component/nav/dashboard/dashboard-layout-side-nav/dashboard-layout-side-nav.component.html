@@ -4,12 +4,12 @@
       <img [src]="BRAND.logo.main" alt="logo" class="brand-logo" width="40"/>
       <h2 class="side-nav-brand-text">{{ BRAND.name }}</h2>
     </a>
-    <a *ngIf="currentUser" [routerLink]="URLS.dashboard.myProfile">
+    <a *ngIf="currentUser" class="disabled">
       <img [src]="profileImg" alt="profile img"
            class="profile-img-small yellow-theme"/>
       <span *ngIf="sideNavClosed === 'false'">
-        My Profile
-    </span>
+        {{ userInfo.username }}
+      </span>
     </a>
     <a *ngIf="currentUser" [routerLink]="URLS.dashboard.root">
       <i [class]="'fas fa-clipboard-list fa-fw fa-lg'" aria-hidden="true"></i>
@@ -45,12 +45,6 @@
     </span>
     </a>
     <div *ngIf="settingsOpened" class="side-nav-sub">
-      <a *ngIf="currentUser" [routerLink]="URLS.settings.editProfile">
-        <i [class]="'fas fa-user fa-fw fa-lg'" aria-hidden="true"></i>
-        <span *ngIf="sideNavClosed === 'false'">
-        Edit Profile
-      </span>
-      </a>
       <a *ngIf="currentUser" [routerLink]="URLS.settings.editSecurity">
         <i [class]="'fas fa-shield-alt fa-fw fa-lg'" aria-hidden="true"></i>
         <span *ngIf="sideNavClosed === 'false'">

@@ -32,7 +32,6 @@ export class LandingLayoutTopNavComponent {
   notifications: any[] = [];
 
   settings = [
-    { name: 'Edit Profile', icon: 'user', url: URLS.settings.editProfile },
     { name: 'Security', icon: 'shield-alt', url: URLS.settings.editSecurity },
     { name: 'Logout', icon: 'sign-out-alt', logout: true }
   ];

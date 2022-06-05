@@ -54,11 +54,6 @@
         <span i18n="@@landingLayoutTopNav.settings">Settings</span>
       </app-dropdown-menu>
     </a>
-    <a *ngIf="currentUser" [routerLink]="URLS.dashboard.myProfile">
-      <img [class.premium-border]="userIsPremium" [src]="profileImg" alt="profile img"
-           class="profile-img-small yellow-theme"/>
-      <span i18n="@@landingLayoutTopNav.myProfile">My Profile</span>
-    </a>
   </div>
 </nav>
 <div [class.landing-layout-top-nav-loading-bar]="loading"></div>

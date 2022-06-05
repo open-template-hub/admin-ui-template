@@ -5,7 +5,6 @@ import { AuthGuard } from './guard/auth/auth.guard';
 import { NavigationInterceptor } from './interceptor/navigation/navigation.interceptor';
 import { DashboardLayoutComponent } from './page/dashboard-layout/dashboard-layout.component';
 import { DashboardPageComponent } from './page/dashboard-layout/dashboard-page/dashboard-page.component';
-import { MyProfilePageComponent } from './page/dashboard-layout/my-profile-page/my-profile-page.component';
 import { NotificationsPageComponent } from './page/dashboard-layout/notifications-page/notifications-page.component';
 import { ProductsPageComponent } from './page/dashboard-layout/products-page/products.component';
 import { UsersPageComponent } from './page/dashboard-layout/users-page/users-page.component';
@@ -56,7 +55,6 @@ import { SitemapPageComponent } from './page/landing-layout/sitemap-page/sitemap
 import { StatusPageComponent } from './page/landing-layout/status-page/status-page.component';
 import { EditOtherProfilePageComponent } from './page/settings-layout/edit-other-profile-page/edit-other-profile-page.component';
 import { EditProductPageComponent } from './page/settings-layout/edit-product-page/edit-product-page.component';
-import { EditProfilePageComponent } from './page/settings-layout/edit-profile-page/edit-profile-page.component';
 import { EditSecurityComponent } from './page/settings-layout/edit-security/edit-security.component';
 import { EditThemePageComponent } from './page/settings-layout/edit-theme-page/edit-theme-page.component';
 import { SettingsLayoutComponent } from './page/settings-layout/settings-layout.component';
@@ -203,11 +201,6 @@ const routes: Routes = [
     children: [
       { path: '', component: DashboardPageComponent, canActivate: [ AuthGuard ] },
       {
-        path: NAVIGATIONS.myProfile.url,
-        component: MyProfilePageComponent,
-        canActivate: [ AuthGuard ],
-      },
-      {
         path: NAVIGATIONS.notifications.url,
         component: NotificationsPageComponent,
         canActivate: [ AuthGuard ],
@@ -231,11 +224,6 @@ const routes: Routes = [
       {
         path: NAVIGATIONS.editTheme.url,
         component: EditThemePageComponent,
-        canActivate: [ AuthGuard ]
-      },
-      {
-        path: NAVIGATIONS.editProfile.url,
-        component: EditProfilePageComponent,
         canActivate: [ AuthGuard ]
       },
       {
