@@ -8,7 +8,6 @@ import { BusinessLogicService } from '../../../../service/business-logic/busines
 import { FileStorageService } from '../../../../service/file-storage/file-storage.service';
 import { LoadingService } from '../../../../service/loading/loading.service';
 import { NotificationService } from '../../../../service/notification/notification.service';
-import { ProductService } from '../../../../service/product/product.service';
 
 @Component( {
   selector: 'app-dashboard-layout-bottom-nav',
@@ -21,7 +20,6 @@ export class DashboardLayoutBottomNavComponent {
   userInfo: any = {};
   loading = false;
   settingsOpened = false;
-  moreOpened = false;
   profileImg = PROFILE_IMG;
   userIsPremium = undefined;
 

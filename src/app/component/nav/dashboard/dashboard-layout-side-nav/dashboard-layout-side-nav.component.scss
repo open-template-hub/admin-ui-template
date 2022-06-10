@@ -46,6 +46,10 @@
         font-size: 11px;
       }
     }
+
+    &.disabled {
+      cursor: initial;
+    }
   }
 }
 
@@ -154,5 +158,9 @@
 
   .side-nav a:hover {
     background: var(--hover);
+  }
+
+  .side-nav .disabled:hover {
+    background: transparent;
   }
 }
