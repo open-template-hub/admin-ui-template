@@ -1,7 +1,11 @@
 @use '../../../../styles/util/util';
 
-.analytics-event-card {
+i {
+  color: var(--color);
+  font-size: 24px;
+}
 
+.analytics-card {
   font-size: 18px;
 
   & .header {
@@ -34,8 +38,15 @@
     & .filters-wrapper {
       padding: 15px;
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-around;
-      height: 50px;
+
+      & div {
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-top: 16px;
+      }
 
       & .category-filter-wrapper, & .date-filter-wrapper {
         @include util.default-border-radius;
@@ -68,6 +79,27 @@
         }
       }
 
+      & .analytics-filter-wrapper {
+        @include util.default-border-radius;
+        @include util.default-shadow;
+
+        display: flex;
+        align-items: center;
+        padding-left: 25px;
+
+        & i {
+          color: var(--color);
+        }
+
+        & p {
+          white-space: nowrap;
+        }
+
+        & input {
+          border-bottom: initial;
+        }
+      }
+
       & .date-filter-wrapper {
         display: flex;
         align-items: center;
@@ -83,6 +115,10 @@
         }
 
       }
+
+      & .verified-wrapper {
+        margin-top: 5px;
+      }
     }
   }
 
@@ -97,38 +133,71 @@
 
     & .row {
       @include util.flex-layout-row;
-      width: 33.333%;
+      width: 100%;
 
       box-sizing: border-box;
       padding: 10px 15px;
       border-bottom: 2px solid var(--theme-color-lighter-8);
-      align-items: center;
 
-      & img {
-        width: 40px;
-        height: 40px;
+      & .edit-button {
+        align-items: center;
+        display: flex;
+        margin-left: auto;
+        color: var(--theme-color-lighter-4);
+        cursor: pointer;
+        height: -webkit-fit-content;
         margin-top: auto;
         margin-bottom: auto;
+        padding: 5px;
       }
 
-      & .column {
-        @include util.flex-layout-column;
-        margin-left: 5px;
-        margin-right: auto;
-        padding: 0 10px;
-
-        p {
-          color: var(--lighter);
-          font-weight: 300;
-          padding-bottom: 5px;
-          text-overflow: ellipsis;
-          overflow: auto;
-        }
-
-        & .date {
-          font-size: 15px;
+      & .row-info {
+        & .field-wrapper {
+          display: flex;
+          align-items: center;
+          padding-bottom: 8px;
+  
+          &.with-icon {
+            padding-left: 2px;
+  
+            & i {
+              padding-left: 5px;
+            }
+  
+            & p {
+              padding-left: 8px;
+              word-break: normal;
+            }
+          }
+  
+          & img {
+            width: 40px;
+            height: 40px;
+            margin-top: auto;
+            margin-bottom: auto;
+          }
+    
+          & .column {
+            @include util.flex-layout-column;
+            margin-left: 5px;
+            margin-right: auto;
+            padding: 0 10px;
+    
+            p {
+              color: var(--lighter);
+              font-weight: 300;
+              padding-bottom: 5px;
+              text-overflow: ellipsis;
+              overflow: auto;
+            }
+    
+            & .date {
+              font-size: 15px;
+            }
+          }
         }
       }
+
     }
 
     & .empty-body {
@@ -181,7 +250,15 @@
 }
 
 @media only screen and (max-width: 999px) {
-  .analytics-event-card {
+  p, i, select, ::placeholder {
+    font-size: 12px;
+  }
+
+  i {
+    font-size: 16px;
+  }
+
+  .analytics-card {
     & .header {
       & .filters-wrapper {
         flex-direction: column;
@@ -189,29 +266,24 @@
         padding: 0;
         margin-top: 20px;
 
-        & .category-filter-wrapper {
-          & select {
-            white-space: break-spaces;
-          }
-        }
-
-        & .date-filter-wrapper {
-          flex-wrap: wrap;
+        & .username-filter-wrapper {
           margin-top: 20px;
           margin-left: 0;
-
-          & input {
-            width: -webkit-fit-content;
-          }
         }
       }
     }
 
     & .body {
       & .row {
-        width: 100%;
         padding-left: 0;
         padding-right: 0;
+
+        & .row-info {
+          & img {
+            width: 30px;
+            height: 30px; 
+          }
+        }
       }
     }
   }

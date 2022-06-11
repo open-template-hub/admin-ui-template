@@ -75,6 +75,43 @@ export class AnalyticsService {
     return this.http.get<any>( `${ environment.serverUrl }/analytics/event?${ queryParams }` );
   }
 
+  getAllEvents(reporter: string | undefined, category: string | undefined, start: number | undefined, end: number | undefined, skip: number | undefined) {
+    let url = `${ environment.serverUrl }/analytics/event/all`;
+    let queryParams: any = {}
+
+    if ( reporter ) {
+      queryParams.reporter = reporter
+    }
+
+    if ( category ) {
+      queryParams.category = category
+    }
+
+    if ( start ) {
+      queryParams.start = start
+    }
+
+    if ( end ) {
+      queryParams.end = end
+    }
+
+    if ( skip ) {
+      queryParams.skip = skip
+    }
+
+    Object.keys(queryParams).forEach( (value: any, index: number) => {
+      if(index === 0) {
+        url += '?'
+      } else {
+        url += '&'
+      }
+
+      url += `${value}=${queryParams[value]}`
+    });
+
+    return this.http.get<any>(url);
+  }
+
   getCategories() {
     const language = this.browserLocaleService.getBrowserLocale();
     return this.http.get<any>( `${ environment.serverUrl }/analytics/event/categories?language=${ language }` );

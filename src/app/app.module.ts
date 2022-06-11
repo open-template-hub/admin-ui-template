@@ -153,6 +153,8 @@ import { EditOtherProfilePageComponent } from './page/settings-layout/edit-other
 import { ProductsPageComponent } from './page/dashboard-layout/products-page/products.component';
 import { ProductsCardComponent } from './component/card/products-card/products-card.component';
 import { EditProductPageComponent } from './page/settings-layout/edit-product-page/edit-product-page.component';
+import { AnalyticsPageComponent } from './page/dashboard-layout/analytics-page/analytics-page.component';
+import { AnalyticsCardComponent } from './component/card/analytics-card/analytics-card.component';
 
 FullCalendarModule.registerPlugins( [
   dayGridPlugin,
@@ -246,6 +248,8 @@ FullCalendarModule.registerPlugins( [
     ProductsPageComponent,
     ProductsCardComponent,
     EditProductPageComponent,
+    AnalyticsPageComponent,
+    AnalyticsCardComponent,
   ],
   imports: [
     BrowserModule,
