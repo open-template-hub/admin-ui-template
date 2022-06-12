@@ -266,6 +266,22 @@ i {
         padding: 0;
         margin-top: 20px;
 
+        & .category-filter-wrapper {
+          & select {
+            white-space: break-spaces;
+          }
+        }
+
+        & .date-filter-wrapper {
+          flex-wrap: wrap;
+          margin-top: 20px;
+          margin-left: 0;
+
+          & input {
+            width: -webkit-fit-content;
+          }
+        }
+
         & .username-filter-wrapper {
           margin-top: 20px;
           margin-left: 0;
