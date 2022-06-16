@@ -2,11 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { BrowserLocaleService } from '../browser-locale/browser-locale.service';
+import mixpanel from 'mixpanel-browser';
 
 @Injectable( {
   providedIn: 'root',
 } )
 export class AnalyticsService {
+
+  mixpanelEnabled = false;
+
   configs = {
     sideContentLimit: 12,
     editSecurityLimit: 12
@@ -16,7 +20,10 @@ export class AnalyticsService {
       private http: HttpClient,
       private browserLocaleService: BrowserLocaleService
   ) {
-    // intentionally blank
+    if ( environment.analytics.mixPanel.tag ) {
+      mixpanel.init( environment.analytics.mixPanel.tag );
+      this.mixpanelEnabled = true;
+    }
   }
 
   logLoginEvent( oauth?: any ) {
@@ -75,6 +82,43 @@ export class AnalyticsService {
     return this.http.get<any>( `${ environment.serverUrl }/analytics/event?${ queryParams }` );
   }
 
+  getAllEvents(reporter: string | undefined, category: string | undefined, start: number | undefined, end: number | undefined, skip: number | undefined) {
+    let url = `${ environment.serverUrl }/analytics/event/all`;
+    let queryParams: any = {}
+
+    if ( reporter ) {
+      queryParams.reporter = reporter
+    }
+
+    if ( category ) {
+      queryParams.category = category
+    }
+
+    if ( start ) {
+      queryParams.start = start
+    }
+
+    if ( end ) {
+      queryParams.end = end
+    }
+
+    if ( skip ) {
+      queryParams.skip = skip
+    }
+
+    Object.keys(queryParams).forEach( (value: any, index: number) => {
+      if(index === 0) {
+        url += '?'
+      } else {
+        url += '&'
+      }
+
+      url += `${value}=${queryParams[value]}`
+    });
+
+    return this.http.get<any>(url);
+  }
+
   getCategories() {
     const language = this.browserLocaleService.getBrowserLocale();
     return this.http.get<any>( `${ environment.serverUrl }/analytics/event/categories?language=${ language }` );
@@ -106,5 +150,13 @@ export class AnalyticsService {
     }
 
     return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data );
+  }
+
+  logEvent( event: string, attributes: any ) {
+    if ( this.mixpanelEnabled ) {
+      mixpanel.track( event, attributes );
+    } else {
+      console.log( 'Event: ', event, attributes );
+    }
   }
 }
