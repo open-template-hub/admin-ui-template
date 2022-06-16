@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NAVIGATIONS } from './data/navigation/navigation.data';
 import { AuthGuard } from './guard/auth/auth.guard';
 import { NavigationInterceptor } from './interceptor/navigation/navigation.interceptor';
+import { AnalyticsPageComponent } from './page/dashboard-layout/analytics-page/analytics-page.component';
 import { DashboardLayoutComponent } from './page/dashboard-layout/dashboard-layout.component';
 import { DashboardPageComponent } from './page/dashboard-layout/dashboard-page/dashboard-page.component';
 import { NotificationsPageComponent } from './page/dashboard-layout/notifications-page/notifications-page.component';
@@ -213,6 +214,11 @@ const routes: Routes = [
       {
         path: NAVIGATIONS.products.url,
         component: ProductsPageComponent,
+        canActivate: [ AuthGuard ]
+      }, 
+      {
+        path: NAVIGATIONS.analytics.url,
+        component: AnalyticsPageComponent,
         canActivate: [ AuthGuard ]
       }, 
     ],
