@@ -7,16 +7,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
-import { FullCalendarModule } from '@fullcalendar/angular'; // must go before plugins
-import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
-import interactionPlugin from '@fullcalendar/interaction';
 import { AnimatedCodeEditorModule } from '@open-template-hub/animated-code-editor';
 import { ButtonModule } from '@open-template-hub/button';
 import { CardModule } from '@open-template-hub/card';
 import { CountdownModule } from '@open-template-hub/countdown';
 import { HeroModule } from '@open-template-hub/hero';
 import { LedModule } from '@open-template-hub/led';
-import { GoogleTagManagerModule } from 'angular-google-tag-manager';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { MarkdownModule } from 'ngx-markdown';
 import { ToastrModule } from 'ngx-toastr';
@@ -24,7 +20,6 @@ import { SwiperModule } from 'swiper/angular';
 import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
-import { CalendarComponent } from './component/calendar/calendar.component';
 import { ActivityCardComponent } from './component/card/activity-card/activity-card.component';
 import { ActivityHistoryCardComponent } from './component/card/activity-history-card/activity-history-card.component';
 import { AnalyticsEventCardComponent } from './component/card/analytics-event-card/analytics-event-card.component';
@@ -149,17 +144,14 @@ import {
 import { SplashLayoutComponent } from './page/splash-layout/splash-layout.component';
 import { UsersCardComponent } from './component/card/users-card/users-card.component';
 import { UsersPageComponent } from './page/dashboard-layout/users-page/users-page.component';
-import { EditOtherProfilePageComponent } from './page/settings-layout/edit-other-profile-page/edit-other-profile-page.component';
+import {
+  EditOtherProfilePageComponent
+} from './page/settings-layout/edit-other-profile-page/edit-other-profile-page.component';
 import { ProductsPageComponent } from './page/dashboard-layout/products-page/products.component';
 import { ProductsCardComponent } from './component/card/products-card/products-card.component';
 import { EditProductPageComponent } from './page/settings-layout/edit-product-page/edit-product-page.component';
 import { AnalyticsPageComponent } from './page/dashboard-layout/analytics-page/analytics-page.component';
 import { AnalyticsCardComponent } from './component/card/analytics-card/analytics-card.component';
-
-FullCalendarModule.registerPlugins( [
-  dayGridPlugin,
-  interactionPlugin
-] );
 
 @NgModule( {
   declarations: [
@@ -187,7 +179,6 @@ FullCalendarModule.registerPlugins( [
     TermsPageComponent,
     SettingsLayoutComponent,
     SideContentComponent,
-    CalendarComponent,
     SearchComponent,
     RateBarComponent,
     EditThemePageComponent,
@@ -243,7 +234,7 @@ FullCalendarModule.registerPlugins( [
     TwoFactorAuthenticationPageComponent,
     AnalyticsEventCardComponent,
     NotificationsPageComponent,
-    UsersCardComponent,    UsersPageComponent,
+    UsersCardComponent, UsersPageComponent,
     EditOtherProfilePageComponent,
     ProductsPageComponent,
     ProductsCardComponent,
@@ -261,7 +252,6 @@ FullCalendarModule.registerPlugins( [
     ImageCropperModule,
     FormsModule,
     BrowserModule,
-    FullCalendarModule,
     SwiperModule,
     CardModule,
     ButtonModule,
@@ -271,7 +261,6 @@ FullCalendarModule.registerPlugins( [
     CountdownModule,
     ToastrModule.forRoot( { preventDuplicates: true } ),
     MarkdownModule.forRoot( { loader: HttpClient } ),
-    GoogleTagManagerModule.forRoot( { id: environment.analytics.googleAnalytics.tag } ),
     ServiceWorkerModule.register( 'ngsw-worker.js', {
       enabled: [ 'production', 'staging' ].includes( environment.identity ),
       // Register the ServiceWorker as soon as the app is stable
