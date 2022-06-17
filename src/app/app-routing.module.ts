@@ -54,7 +54,9 @@ import {
 } from './page/landing-layout/raw-content-pages/verify-account-page/verify-account-page.component';
 import { SitemapPageComponent } from './page/landing-layout/sitemap-page/sitemap-page.component';
 import { StatusPageComponent } from './page/landing-layout/status-page/status-page.component';
-import { EditOtherProfilePageComponent } from './page/settings-layout/edit-other-profile-page/edit-other-profile-page.component';
+import {
+  EditOtherProfilePageComponent
+} from './page/settings-layout/edit-other-profile-page/edit-other-profile-page.component';
 import { EditProductPageComponent } from './page/settings-layout/edit-product-page/edit-product-page.component';
 import { EditSecurityComponent } from './page/settings-layout/edit-security/edit-security.component';
 import { EditThemePageComponent } from './page/settings-layout/edit-theme-page/edit-theme-page.component';
@@ -200,27 +202,27 @@ const routes: Routes = [
     path: NAVIGATIONS.dashboard.url,
     component: DashboardLayoutComponent,
     children: [
-      { path: '', component: DashboardPageComponent, canActivate: [ AuthGuard ] },
+      { path: '', component: DashboardPageComponent, canActivate: [ AuthGuard, NavigationInterceptor ] },
       {
         path: NAVIGATIONS.notifications.url,
         component: NotificationsPageComponent,
-        canActivate: [ AuthGuard ],
+        canActivate: [ AuthGuard, NavigationInterceptor ],
       },
       {
         path: NAVIGATIONS.users.url,
         component: UsersPageComponent,
-        canActivate: [ AuthGuard ]
+        canActivate: [ AuthGuard, NavigationInterceptor ]
       },
       {
         path: NAVIGATIONS.products.url,
         component: ProductsPageComponent,
-        canActivate: [ AuthGuard ]
-      }, 
+        canActivate: [ AuthGuard, NavigationInterceptor ]
+      },
       {
         path: NAVIGATIONS.analytics.url,
         component: AnalyticsPageComponent,
-        canActivate: [ AuthGuard ]
-      }, 
+        canActivate: [ AuthGuard, NavigationInterceptor ]
+      },
     ],
   },
   {
@@ -230,22 +232,22 @@ const routes: Routes = [
       {
         path: NAVIGATIONS.editTheme.url,
         component: EditThemePageComponent,
-        canActivate: [ AuthGuard ]
+        canActivate: [ AuthGuard, NavigationInterceptor ]
       },
       {
         path: NAVIGATIONS.editOtherProfile.url + '/:username',
         component: EditOtherProfilePageComponent,
-        canActivate: [ AuthGuard ]
+        canActivate: [ AuthGuard, NavigationInterceptor ]
       },
       {
         path: NAVIGATIONS.editProduct.url + '/:productId',
         component: EditProductPageComponent,
-        canActivate: [AuthGuard]
+        canActivate: [ AuthGuard, NavigationInterceptor ]
       },
       {
         path: NAVIGATIONS.editSecurity.url,
         component: EditSecurityComponent,
-        canActivate: [ AuthGuard ]
+        canActivate: [ AuthGuard, NavigationInterceptor ]
       }
     ],
   },
