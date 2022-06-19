@@ -20,8 +20,8 @@ export class DashboardLayoutBottomNavComponent {
   userInfo: any = {};
   loading = false;
   settingsOpened = false;
+  managementOpened = false;
   profileImg = PROFILE_IMG;
-  userIsPremium = undefined;
 
   notifications: any[] = [];
 

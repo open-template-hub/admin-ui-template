@@ -25,6 +25,8 @@ export class DashboardLayoutSideNavComponent {
   BRAND = BRAND;
 
   currentUser: AuthToken;
+  managementOpened = false;
+  managementMoreOpened = false;
   settingsOpened = false;
   settingsMoreOpened = false;
 
@@ -39,7 +41,6 @@ export class DashboardLayoutSideNavComponent {
       private businessLogicService: BusinessLogicService,
       private fileStorageService: FileStorageService,
       private themeService: ThemeService,
-      private productService: ProductService,
       private notificationService: NotificationService
   ) {
     this.authenticationService.currentUser.subscribe( currentUser => {

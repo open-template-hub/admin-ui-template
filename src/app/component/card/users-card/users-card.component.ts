@@ -42,7 +42,7 @@ export class UsersCardComponent implements OnInit {
       "Exclude Socials",
       environment.oauth.twitter.tag,
       environment.oauth.google.tag,
-      environment.oauth.facebook.tag === '' ? environment.oauth.facebook.tag : "Facebook, not supported",
+      environment.oauth.facebook.tag !== '' ? environment.oauth.facebook.tag : "Facebook, not supported",
       environment.oauth.linkedin.tag,
       environment.oauth.twitch.tag,
       environment.oauth.github.tag,

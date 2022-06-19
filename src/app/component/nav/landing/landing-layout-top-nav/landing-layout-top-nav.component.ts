@@ -18,7 +18,6 @@ import { NotificationService } from '../../../../service/notification/notificati
 export class LandingLayoutTopNavComponent {
 
   profileImg = PROFILE_IMG;
-  userIsPremium;
   currentUser: AuthToken;
   loading = false;
 
@@ -35,6 +34,12 @@ export class LandingLayoutTopNavComponent {
     { name: 'Security', icon: 'shield-alt', url: URLS.settings.editSecurity },
     { name: 'Logout', icon: 'sign-out-alt', logout: true }
   ];
+
+  management = [
+    { name: 'Users', icon: 'users', url: URLS.dashboard.users },
+    { name: 'Products', icon: 'cubes', url: URLS.dashboard.products },
+    { name: 'Analytics', icon: 'chart-line', url: URLS.dashboard.analytics }
+  ]
 
   constructor(
       private router: Router,

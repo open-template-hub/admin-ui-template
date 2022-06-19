@@ -234,7 +234,7 @@ i {
 
 @media only screen and (max-width: 999px) {
   p, i, select, ::placeholder {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   i {
@@ -257,6 +257,7 @@ i {
     }
 
     & .body {
+      padding: 0 1em 1em;
       & .row {
         padding-left: 0;
         padding-right: 0;
