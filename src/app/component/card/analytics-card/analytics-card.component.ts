@@ -149,4 +149,7 @@ export class AnalyticsCardComponent implements OnInit {
     this.router.navigate( [ URLS.settings.editProduct + '/' + id ] );
   }
 
+  timestampToString( timestamp: any ): string {
+    return new Date( timestamp ).toLocaleString();
+  }
 }
