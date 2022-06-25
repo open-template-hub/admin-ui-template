@@ -26,7 +26,6 @@ export class DashboardLayoutSideNavComponent {
 
   currentUser: AuthToken;
   managementOpened = false;
-  managementMoreOpened = false;
   settingsOpened = false;
   settingsMoreOpened = false;
 

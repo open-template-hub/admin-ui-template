@@ -30,7 +30,7 @@
     </a>
 
     <!--Management-->
-    <a *ngIf="currentUser" (click)="managementOpened = !managementOpened" href="javascript:void(0)">
+    <a *ngIf="currentUser" (click)="managementOpened = !managementOpened; settingsOpened = false;" href="javascript:void(0)">
       <i [class]="'fas fa-solid fa-file-pen fa-fw'" aria-hidden="true"></i>
       <span *ngIf="sideNavClosed === 'false'">
         Management
@@ -44,30 +44,22 @@
           Users
         </span>
       </a>
-      <a *ngIf="currentUser && managementMoreOpened" [routerLink]="URLS.dashboard.products">
+      <a *ngIf="currentUser" [routerLink]="URLS.dashboard.products">
         <i [class]="'fas fa-solid fa-cubes fa-fw fa-lg'" aria-hidden="true"></i>
         <span *ngIf="sideNavClosed === 'false'">
           Products
         </span>
       </a>
-      <a *ngIf="currentUser && managementMoreOpened" [routerLink]="URLS.dashboard.analytics">
+      <a *ngIf="currentUser" [routerLink]="URLS.dashboard.analytics">
         <i [class]="'fas fa-solid fa-chart-line fa-fw fa-lg'" aria-hidden="true"></i>
         <span *ngIf="sideNavClosed === 'false'">
           Analytics
         </span>
       </a>
-      <a (click)="managementMoreOpened = !managementMoreOpened" *ngIf="currentUser" href="javascript:void(0)"
-      id=more-management>
-        <i [class]="'fas fa-fw fa-lg ' + (!managementMoreOpened ? 'fa-chevron-down' : 'fa-chevron-up')"
-        aria-hidden="true"></i>
-        <span *ngIf="sideNavClosed === 'false'">
-          {{!managementMoreOpened ? 'More' : 'Less'}}
-        </span>
-      </a>
     </div>
 
     <!--Settings-->
-    <a (click)="settingsOpened = !settingsOpened" *ngIf="currentUser" href="javascript:void(0)">
+    <a (click)="settingsOpened = !settingsOpened; managementOpened = false;" *ngIf="currentUser" href="javascript:void(0)">
       <i [class]="'fas fa-cog fa-fw fa-lg'" aria-hidden="true"></i>
       <span *ngIf="sideNavClosed === 'false'">
         Settings
