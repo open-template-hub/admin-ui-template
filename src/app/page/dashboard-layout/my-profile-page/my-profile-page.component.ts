@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { URLS } from 'src/app/data/navigation/navigation.data';
 import { PROFILE_IMG } from 'src/app/data/profile/profile.data';
@@ -8,7 +8,6 @@ import { BusinessLogicService } from 'src/app/service/business-logic/business-lo
 import { FileStorageService } from 'src/app/service/file-storage/file-storage.service';
 import { InformationService } from 'src/app/service/information/information.service';
 import { LoadingService } from 'src/app/service/loading/loading.service';
-import { ProductService } from 'src/app/service/product/product.service';
 import { environment } from 'src/environments/environment';
 
 @Component({

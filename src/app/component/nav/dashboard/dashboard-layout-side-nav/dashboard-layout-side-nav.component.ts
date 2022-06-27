@@ -8,7 +8,6 @@ import { AuthenticationService } from '../../../../service/auth/authentication.s
 import { BusinessLogicService } from '../../../../service/business-logic/business-logic.service';
 import { FileStorageService } from '../../../../service/file-storage/file-storage.service';
 import { NotificationService } from '../../../../service/notification/notification.service';
-import { ProductService } from '../../../../service/product/product.service';
 import { ThemeService } from '../../../../service/theme/theme.service';
 
 @Component( {

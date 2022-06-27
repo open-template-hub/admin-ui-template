@@ -26,7 +26,7 @@ export class UsersCardComponent implements OnInit {
 
   verifiedOptions = ["Verified/Unverified", "Unverified", "Verified"]
   selectedVerified;
-  
+
   oauthOptions = [];
   selectedOauth;
 
@@ -36,7 +36,7 @@ export class UsersCardComponent implements OnInit {
   constructor(
     private authenticationService: AuthenticationService,
     private router: Router
-  ) { 
+  ) {
     this.oauthOptions = [
       "Social/OTH Accounts",
       "Exclude Socials",
@@ -161,7 +161,7 @@ export class UsersCardComponent implements OnInit {
   }
 
   changeTwoFAOptions(event: any) {
-    const twoFA = this.twoFAOptions[event.srcElement.selectedIndex];;
+    const twoFA = this.twoFAOptions[event.srcElement.selectedIndex];
 
     if(twoFA === '2FA Enabled/Disabled') {
       this.selectedTwoFA = undefined;

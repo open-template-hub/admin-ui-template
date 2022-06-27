@@ -22,7 +22,7 @@ export class InfiniteScrollingService {
     return this.intersectionSubject.asObservable();
   }
 
-  intersectionCallback( entries, observer ) {
+  intersectionCallback( entries ) {
     entries.forEach( entry => {
       entry.intersectionRatio === 1 ?
           this.intersectionSubject.next( true ) : this.intersectionSubject.next( false );

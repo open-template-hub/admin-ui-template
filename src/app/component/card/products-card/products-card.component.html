@@ -1,64 +1,65 @@
-
 <oth-card
-*ngIf="products"
-[bodyTemplate]="bodyTemplate"
-[footerTemplate]="footerTemplate"
-[headerTemplate]="headerTemplate"
-class="products-card">
-<ng-template #headerTemplate>
+    *ngIf="products"
+    [bodyTemplate]="bodyTemplate"
+    [footerTemplate]="footerTemplate"
+    [headerTemplate]="headerTemplate"
+    class="products-card">
+  <ng-template #headerTemplate>
     <div class="header">
-    <div class="upper-header-wrapper">
+      <div class="upper-header-wrapper">
         <h3>Products</h3>
-    </div>
-    <div class="filters-wrapper">
+      </div>
+      <div class="filters-wrapper">
         <div class="products-filter-wrapper">
-            <i [class]="'fas fa-search fa-fw'" aria-hidden="true"></i>
-            <input #searchArea (keyup)="searchWithUsernameKeyup($event)" placeholder="Product name..." type="text">
+          <i [class]="'fas fa-search fa-fw'" aria-hidden="true"></i>
+          <input #searchArea (keyup)="searchWithUsernameKeyup($event)" placeholder="Product name..." type="text">
         </div>
+      </div>
     </div>
-    </div>
-</ng-template>
-<ng-template #bodyTemplate>
+  </ng-template>
+  <ng-template #bodyTemplate>
     <div *ngIf="products" class="body">
-    <div *ngFor="let product of products; let last = last; let i = index" class="row">
+      <div *ngFor="let product of products; let last = last; let i = index" class="row">
         <div class="row-info">
-            <div class="field-wrapper">
-                <img [src]="'./assets/common/profile-img.png'" alt="activity icon">
-                <p class="name">{{ product.name }}</p>
+          <div class="field-wrapper">
+            <img [src]="'./assets/common/profile-img.png'" alt="activity icon">
+            <p class="name">{{ product.name }}</p>
+          </div>
+          <div class="field-wrapper with-icon">
+            <p *ngIf="product.description" class="email">{{ product.description }}</p>
+          </div>
+          <ng-container *ngIf="product.payload?.stripe">
+            <div class="field-wrapper with-icon" *ngIf="product.payload?.stripe">
+              <i style="font-size: 35px;" aria-hidden="true" class="fa-brands fa-stripe"></i>
+              <p class="stripe-payload">{{ product.payload.stripe.external_product_id }}</p>
             </div>
             <div class="field-wrapper with-icon">
-                <p *ngIf="product.description" class="email">{{ product.description }}</p>
+              <i style="font-size: 15px; margin-left: 20px;" aria-hidden="true" class="fa-solid fa-dollar-sign"></i>
+              <p style="padding-left: 3px;"
+                 class="stripe-payload">{{ product.payload.stripe.amount }} {{ product.payload.stripe.currency }}</p>
             </div>
-            <ng-container *ngIf="product.payload?.stripe">
-                <div class="field-wrapper with-icon" *ngIf="product.payload?.stripe">
-                    <i style="font-size: 35px;" aria-hidden="true" class="fa-brands fa-stripe"></i>
-                    <p class="stripe-payload">{{ product.payload.stripe.external_product_id }}</p>
-                </div>
-                <div class="field-wrapper with-icon">
-                    <i style="font-size: 15px; margin-left: 20px;" class="fa-solid fa-dollar-sign"></i>
-                    <p style="padding-left: 3px;" class="stripe-payload">{{ product.payload.stripe.amount }} {{ product.payload.stripe.currency }}</p>
-                </div>
-            </ng-container>
+          </ng-container>
         </div>
-        <i (click)="editProductTapped(product.product_id)" aria-hidden="true" class="fa-solid fa-pen-to-square edit-button"></i>
-    </div>
-    <p *ngIf="products.length === 0" class="empty-body">
+        <i (click)="editProductTapped(product.product_id)" aria-hidden="true"
+           class="fa-solid fa-pen-to-square edit-button"></i>
+      </div>
+      <p *ngIf="products.length === 0" class="empty-body">
         No results found.
-    </p>
+      </p>
     </div>
-</ng-template>
-<ng-template #footerTemplate>
+  </ng-template>
+  <ng-template #footerTemplate>
     <div class="footer" *ngIf="meta">
-    <div>
+      <div>
         {{ products.length + meta.offset }} / {{ meta.count }}
-    </div>
-    <div class="page-routing-wrapper">
+      </div>
+      <div class="page-routing-wrapper">
         <i (click)="goToPreviousPage()" [class.active-routing-item]="hasPreviousPage"
-        aria-hidden="true" class="fas fa-angle-left"></i>
+           aria-hidden="true" class="fas fa-angle-left"></i>
         <span class="page-count-span">{{ currentPageCount }}</span>
         <i (click)="goToNextPage()" [class.active-routing-item]="hasNextPage" aria-hidden="true"
-        class="fas fa-angle-right"></i>
+           class="fas fa-angle-right"></i>
+      </div>
     </div>
-    </div>
-</ng-template>
+  </ng-template>
 </oth-card>
