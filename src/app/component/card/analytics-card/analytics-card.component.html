@@ -52,6 +52,9 @@ class="analytics-card">
             <div class="field-wrapper">
                 <p *ngIf="analytic.source" class="email">{{ analytic.source }}</p>
             </div>
+            <div class="field-wrapper">
+                <p *ngIf="analytic.source" class="email">{{ timestampToString(analytic.timestamp) }}</p>
+            </div> 
         </div>
     </div>
     <p *ngIf="analytics.length === 0" class="empty-body">

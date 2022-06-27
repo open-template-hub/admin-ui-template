@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { URLS } from 'src/app/data/navigation/navigation.data';
-import { FileStorageService } from 'src/app/service/file-storage/file-storage.service';
 import { ProductService } from 'src/app/service/product/product.service';
 import { ToastService } from 'src/app/service/toast/toast.service';
 
@@ -38,7 +37,7 @@ export class EditProductPageComponent implements OnInit {
 
     this.productService.getAllProducts(productId).subscribe( response => {
       if(response?.products.length > 0) {
-        this.productInfo = response.products[0];            
+        this.productInfo = response.products[0];
         this.updateForm(response.products[0])
       }
       else {
@@ -91,7 +90,7 @@ export class EditProductPageComponent implements OnInit {
     this.productService.updateProduct( data.productId, data.name, data.description ).subscribe(
       () => {
         this.toastService.success("Product updated");
-        this.ngOnInit() 
+        this.ngOnInit()
       }
     )
   }

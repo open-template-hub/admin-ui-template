@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { URLS } from 'src/app/data/navigation/navigation.data';
-import { PaymentService } from 'src/app/service/payment/payment.service';
 import { ProductService } from 'src/app/service/product/product.service';
 
 @Component({
@@ -24,7 +23,7 @@ export class ProductsCardComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private router: Router
-  ) { 
+  ) {
   }
 
   ngOnInit(): void {

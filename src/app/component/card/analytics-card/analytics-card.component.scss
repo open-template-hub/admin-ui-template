@@ -175,6 +175,7 @@ i {
             height: 40px;
             margin-top: auto;
             margin-bottom: auto;
+            padding-right: 5px;
           }
     
           & .column {
@@ -250,8 +251,8 @@ i {
 }
 
 @media only screen and (max-width: 999px) {
-  p, i, select, ::placeholder {
-    font-size: 12px;
+  p, i, select, ::placeholder, input {
+    font-size: 14px;
   }
 
   i {
@@ -269,6 +270,7 @@ i {
         & .category-filter-wrapper {
           & select {
             white-space: break-spaces;
+            padding-left: 7px;
           }
         }
 
@@ -290,6 +292,8 @@ i {
     }
 
     & .body {
+      padding: 0 1em 1em;
+
       & .row {
         padding-left: 0;
         padding-right: 0;

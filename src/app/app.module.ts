@@ -152,6 +152,7 @@ import { ProductsCardComponent } from './component/card/products-card/products-c
 import { EditProductPageComponent } from './page/settings-layout/edit-product-page/edit-product-page.component';
 import { AnalyticsPageComponent } from './page/dashboard-layout/analytics-page/analytics-page.component';
 import { AnalyticsCardComponent } from './component/card/analytics-card/analytics-card.component';
+import { MyProfilePageComponent } from './page/dashboard-layout/my-profile-page/my-profile-page.component';
 
 @NgModule( {
   declarations: [
@@ -241,6 +242,7 @@ import { AnalyticsCardComponent } from './component/card/analytics-card/analytic
     EditProductPageComponent,
     AnalyticsPageComponent,
     AnalyticsCardComponent,
+    MyProfilePageComponent,
   ],
   imports: [
     BrowserModule,

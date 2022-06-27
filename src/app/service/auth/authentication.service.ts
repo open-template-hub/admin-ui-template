@@ -1,4 +1,3 @@
-import { query } from '@angular/animations';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
@@ -270,7 +269,7 @@ export class AuthenticationService {
     if(username) {
       queryParams.username = username
     }
-  
+
     if(offset) {
       queryParams.offset = offset
     }
@@ -287,7 +286,7 @@ export class AuthenticationService {
 
     return this.http.get<any>(url).pipe(
       map( res => {
-        return this.getUsersAdapter.adapt(res) 
+        return this.getUsersAdapter.adapt(res)
       } )
     )
   }

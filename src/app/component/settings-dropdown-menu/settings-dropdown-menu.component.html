@@ -8,7 +8,7 @@
        [class.dropdown-opened]="isDropdownOpen && closeDropdownInternalClicked"
        class="dropdown-content">
     <i aria-hidden="true"
-       class="dropdown-caret fas fa-caret-up fa-lg fa-fw"></i>
+       class="dropdown-caret fas fa-caret-up fa-lg fa-fw" [style.left]="carrotLeftSpace"></i>
     <div (click)="closeDropDownInternal()" class="dropdown-top-menu">
       <i aria-hidden="true" class="fas fa-times fa-lg fa-fw"></i>
     </div>
