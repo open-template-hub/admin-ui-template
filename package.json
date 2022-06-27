@@ -1,7 +1,7 @@
 {
   "name": "admin-ui-template",
   "description": "Admin UI Template is a modern, responsive, and customizable admin UI template for your business. It contains reusable components, theme color, and design support along with dark theme support.",
-  "version": "4.0.11",
+  "version": "4.0.12",
   "license": "MIT",
   "scripts": {
     "buildLocal": "ng build --configuration=local --localize",

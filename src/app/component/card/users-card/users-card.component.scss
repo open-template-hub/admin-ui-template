@@ -252,10 +252,18 @@ i {
           margin-top: 20px;
           margin-left: 0;
         }
+
+        & .category-filter-wrapper {
+          & select {
+            padding-left: 6px;
+          }          
+        }
       }
     }
 
     & .body {
+      padding: 0 1em 1em;
+
       & .row {
         padding-left: 0;
         padding-right: 0;
@@ -265,6 +273,10 @@ i {
           & img {
             width: 30px;
             height: 30px; 
+          }
+
+          & .field-wrapper.with-icon, p {
+            padding-left: 6px;
           }
         }
       }

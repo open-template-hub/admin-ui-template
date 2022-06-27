@@ -8,14 +8,11 @@ import { BrowserLocaleService } from '../browser-locale/browser-locale.service';
 } )
 export class TwoFactorCodeService {
   constructor(
-      private http: HttpClient,
-      private browserLocaleService: BrowserLocaleService
+      private http: HttpClient
   ) {
   }
 
   submitPhoneNumber( phoneNumber: string ) {
-    // TODO: Will we use language code?
-    const languageCode = this.browserLocaleService.getBrowserLocale();
     return this.http.post<any>( `${ environment.serverUrl }/2fa/request`, {
       phoneNumber,
     } );

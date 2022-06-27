@@ -6,6 +6,7 @@ import { NavigationInterceptor } from './interceptor/navigation/navigation.inter
 import { AnalyticsPageComponent } from './page/dashboard-layout/analytics-page/analytics-page.component';
 import { DashboardLayoutComponent } from './page/dashboard-layout/dashboard-layout.component';
 import { DashboardPageComponent } from './page/dashboard-layout/dashboard-page/dashboard-page.component';
+import { MyProfilePageComponent } from './page/dashboard-layout/my-profile-page/my-profile-page.component';
 import { NotificationsPageComponent } from './page/dashboard-layout/notifications-page/notifications-page.component';
 import { ProductsPageComponent } from './page/dashboard-layout/products-page/products.component';
 import { UsersPageComponent } from './page/dashboard-layout/users-page/users-page.component';
@@ -203,6 +204,11 @@ const routes: Routes = [
     component: DashboardLayoutComponent,
     children: [
       { path: '', component: DashboardPageComponent, canActivate: [ AuthGuard, NavigationInterceptor ] },
+      {
+        path: NAVIGATIONS.myProfile.url,
+        component: MyProfilePageComponent,
+        canActivate: [ AuthGuard ],
+      },
       {
         path: NAVIGATIONS.notifications.url,
         component: NotificationsPageComponent,

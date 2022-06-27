@@ -4,7 +4,6 @@ import { ActivatedRoute} from '@angular/router';
 import { URLS } from 'src/app/data/navigation/navigation.data';
 import { PROFILE_IMG } from 'src/app/data/profile/profile.data';
 import { BusinessLogicService } from 'src/app/service/business-logic/business-logic.service';
-import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { ToastService } from 'src/app/service/toast/toast.service';
 import { FileStorageService } from 'src/app/service/file-storage/file-storage.service';
 
@@ -54,7 +53,7 @@ export class EditOtherProfilePageComponent implements OnInit {
           }
         } );
       }
-      
+
       this.updateForm(user)
     })
   }
@@ -120,8 +119,8 @@ export class EditOtherProfilePageComponent implements OnInit {
     }
 
     console.log({ username: this.userInfo.username, payload } );
-    this.businessLogicService.updateOtherInfo( { username: this.userInfo.username, payload } ).subscribe( 
-      () => { 
+    this.businessLogicService.updateOtherInfo( { username: this.userInfo.username, payload } ).subscribe(
+      () => {
         this.toastService.success("Info updated");
         this.ngOnInit()
       }
