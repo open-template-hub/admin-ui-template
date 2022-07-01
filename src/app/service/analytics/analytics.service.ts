@@ -26,31 +26,30 @@ export class AnalyticsService {
     }
   }
 
-  logLoginEvent( oauth?: any ) {
-    if ( oauth ) {
-      return this.logSocialLoginEvent( oauth.name, oauth.logo );
-    } else {
-      const data = {
-        payload: {
-          icon: './assets/common/profile-img.png'
-        },
-        category: 'LOGIN',
-        source: environment.clientUrl
-      };
-
-      return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data );
-    }
-  }
-
-  logPaymentEvent( payment: any ) {
+  logLoginEvent() {
     const data = {
       payload: {
-        provider: payment.name,
-        icon: payment.logo
+        icon: './assets/common/profile-img.png'
       },
-      category: 'PAYMENT',
+      category: 'LOGIN',
       source: environment.clientUrl
     };
+
+    this.logEvent( 'Login', data );
+
+    return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data );
+  }
+
+  logLogoutEvent() {
+    const data = {
+      payload: {
+        icon: './assets/common/profile-img.png'
+      },
+      category: 'LOGOUT',
+      source: environment.clientUrl
+    };
+
+    this.logEvent( 'Logout', data );
 
     return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data );
   }
@@ -61,7 +60,16 @@ export class AnalyticsService {
       source: environment.clientUrl
     };
 
+    this.logEvent( 'Submit Phone Number', data );
+
     return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data );
+  }
+
+  logout() {
+    this.logLogoutEvent();
+    if ( this.mixpanelEnabled ) {
+      mixpanel.reset();
+    }
   }
 
   getEvents( category: string | undefined, start: number | undefined, end: number | undefined, skip: number, limit: number ) {
@@ -82,41 +90,41 @@ export class AnalyticsService {
     return this.http.get<any>( `${ environment.serverUrl }/analytics/event?${ queryParams }` );
   }
 
-  getAllEvents(reporter: string | undefined, category: string | undefined, start: number | undefined, end: number | undefined, skip: number | undefined) {
+  getAllEvents( reporter: string | undefined, category: string | undefined, start: number | undefined, end: number | undefined, skip: number | undefined ) {
     let url = `${ environment.serverUrl }/analytics/event/all`;
-    let queryParams: any = {}
+    const queryParams: any = {};
 
     if ( reporter ) {
-      queryParams.reporter = reporter
+      queryParams.reporter = reporter;
     }
 
     if ( category ) {
-      queryParams.category = category
+      queryParams.category = category;
     }
 
     if ( start ) {
-      queryParams.start = start
+      queryParams.start = start;
     }
 
     if ( end ) {
-      queryParams.end = end
+      queryParams.end = end;
     }
 
     if ( skip ) {
-      queryParams.skip = skip
+      queryParams.skip = skip;
     }
 
-    Object.keys(queryParams).forEach( (value: any, index: number) => {
-      if(index === 0) {
-        url += '?'
+    Object.keys( queryParams ).forEach( ( value: any, index: number ) => {
+      if ( index === 0 ) {
+        url += '?';
       } else {
-        url += '&'
+        url += '&';
       }
 
-      url += `${value}=${queryParams[value]}`
-    });
+      url += `${ value }=${ queryParams[ value ] }`;
+    } );
 
-    return this.http.get<any>(url);
+    return this.http.get<any>( url );
   }
 
   getCategories() {
@@ -152,23 +160,5 @@ export class AnalyticsService {
     } else {
       console.log( 'Event: ', event, attributes );
     }
-  }
-
-  private logSocialLoginEvent( provider: string, icon: string ) {
-
-    const data: any = {
-      category: 'SOCIAL_LOGIN',
-      source: environment.clientUrl
-    };
-
-    if ( provider ) {
-      data.payload = { provider };
-    }
-
-    if ( icon ) {
-      data.payload = { icon };
-    }
-
-    return this.http.post<any>( `${ environment.serverUrl }/analytics/event`, data );
   }
 }

@@ -144,6 +144,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     // Special case for initialization (if return url is else than dashboard)
     this.businessLogicService.me()
     .subscribe( userInfo => {
+          this.analyticsService.logLoginEvent().subscribe();
           this.router.navigateByUrl( this.returnUrl );
           if ( !userInfo.payload ) {
             this.businessLogicService.createMyInfo()
