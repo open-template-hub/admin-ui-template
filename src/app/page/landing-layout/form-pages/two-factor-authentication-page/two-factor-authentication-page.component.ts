@@ -41,8 +41,6 @@ export class TwoFactorAuthenticationPageComponent implements OnInit, OnDestroy {
   expiry: string;
   maskedPhoneNumber: string;
 
-  oauth: any;
-
   constructor(
       private formBuilder: FormBuilder,
       private route: ActivatedRoute,
@@ -64,13 +62,6 @@ export class TwoFactorAuthenticationPageComponent implements OnInit, OnDestroy {
 
     // get return url from route parameters or default to '/dashboard'
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || this.URLS.dashboard.root;
-
-    if ( this.route.snapshot.queryParams.oauthName && this.route.snapshot.queryParams.oauthLogo ) {
-      this.oauth = {
-        name: this.route.snapshot.queryParams.oauthName,
-        logo: this.route.snapshot.queryParams.oauthLogo
-      };
-    }
 
     const preAuthToken = this.authenticationService.preAuthTokenValue;
     this.preAuthToken = preAuthToken.preAuthToken;
@@ -115,7 +106,7 @@ export class TwoFactorAuthenticationPageComponent implements OnInit, OnDestroy {
       this.authenticationService.setLoginParams( currentUser, false );
       this.businessLogicService.me()
       .subscribe( () => {
-        this.analyticsService.logLoginEvent( this.oauth ).subscribe();
+        this.analyticsService.logLoginEvent().subscribe();
       } );
 
       this.router.navigate( [ URLS.dashboard.root ] );
