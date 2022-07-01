@@ -7,6 +7,7 @@ import { GetUsersResponseModel } from 'src/app/model/response/get-users-response
 import { environment } from '../../../environments/environment';
 import { DarkLightSettings, DEFAULT_THEME } from '../../data/theme/theme.data';
 import { AuthToken } from '../../model/auth/auth-token.model';
+import { AnalyticsService } from '../analytics/analytics.service';
 import { BrowserLocaleService } from '../browser-locale/browser-locale.service';
 import { SocketService } from '../socket/socket.service';
 import { ThemeService } from '../theme/theme.service';
@@ -25,7 +26,7 @@ export class AuthenticationService {
       private themeService: ThemeService,
       private socketService: SocketService,
       private browserLocaleService: BrowserLocaleService,
-
+      private analyticsService: AnalyticsService,
       // adapters
       private getUsersAdapter: GetUsersResponseAdapter
   ) {
@@ -208,6 +209,7 @@ export class AuthenticationService {
   logout() {
     this.themeService.logout();
     this.socketService.logout();
+    this.analyticsService.logout();
 
     const refreshToken = this.currentUserValue.refreshToken;
 
@@ -245,49 +247,49 @@ export class AuthenticationService {
     );
   }
 
-  getUsers(role?: string, verified?: string, oauth?: string, twoFA?: string, username?: string, offset?: number): Observable<GetUsersResponseModel> {
-    let url = `${environment.serverUrl}/auth/users`;
+  getUsers( role?: string, verified?: string, oauth?: string, twoFA?: string, username?: string, offset?: number ): Observable<GetUsersResponseModel> {
+    let url = `${ environment.serverUrl }/auth/users`;
 
-    let queryParams: any = {}
+    const queryParams: any = {};
 
-    if(role) {
-      queryParams.role = role
+    if ( role ) {
+      queryParams.role = role;
     }
 
-    if(verified) {
-      queryParams.verified = verified
+    if ( verified ) {
+      queryParams.verified = verified;
     }
 
-    if(oauth) {
-      queryParams.oauth = oauth
+    if ( oauth ) {
+      queryParams.oauth = oauth;
     }
 
-    if(twoFA) {
-      queryParams.twoFA = twoFA
+    if ( twoFA ) {
+      queryParams.twoFA = twoFA;
     }
 
-    if(username) {
-      queryParams.username = username
+    if ( username ) {
+      queryParams.username = username;
     }
 
-    if(offset) {
-      queryParams.offset = offset
+    if ( offset ) {
+      queryParams.offset = offset;
     }
 
-    Object.keys(queryParams).forEach( (value: any, index: number) => {
-      if(index === 0) {
-        url += '?'
+    Object.keys( queryParams ).forEach( ( value: any, index: number ) => {
+      if ( index === 0 ) {
+        url += '?';
       } else {
-        url += '&'
+        url += '&';
       }
 
-      url += `${value}=${queryParams[value]}`
-    });
+      url += `${ value }=${ queryParams[ value ] }`;
+    } );
 
-    return this.http.get<any>(url).pipe(
-      map( res => {
-        return this.getUsersAdapter.adapt(res)
-      } )
-    )
+    return this.http.get<any>( url ).pipe(
+        map( res => {
+          return this.getUsersAdapter.adapt( res );
+        } )
+    );
   }
 }
