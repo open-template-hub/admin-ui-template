@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { URLS } from 'src/app/data/navigation/navigation.data';
 import { GetUsersMetaModel, GetUsersUserResponseModel } from 'src/app/model/response/get-users-response.model';
 import { AuthenticationService } from 'src/app/service/auth/authentication.service';
-import { environment } from 'src/environments/environment';
 
 @Component( {
   selector: 'app-users-card',
