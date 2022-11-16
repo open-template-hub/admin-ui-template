@@ -55,6 +55,7 @@ i {
 
         & i {
           color: var(--color);
+          padding-right: 7px;
         }
         
         display: flex;
@@ -71,10 +72,6 @@ i {
 
         & select::-ms-expand {
           display: none;
-        }
-
-        & i {
-          padding-right: 7px;
         }
       }
 
