@@ -13,13 +13,12 @@ import { InformationService } from '../../../service/information/information.ser
 import { LoadingService } from '../../../service/loading/loading.service';
 import { ProductService } from '../../../service/product/product.service';
 
-@Component( {
+@Component({
   selector: 'app-dashboard-page',
   templateUrl: './dashboard-page.component.html',
-  styleUrls: [ './dashboard-page.component.scss' ]
-} )
+  styleUrls: ['./dashboard-page.component.scss'],
+})
 export class DashboardPageComponent implements OnInit, OnDestroy {
-
   currentUser: AuthToken;
   userInfo: any = {};
   environment = environment;
@@ -32,47 +31,49 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   rateObject: Rate;
 
   constructor(
-      private formBuilder: FormBuilder,
-      private router: Router,
-      private authenticationService: AuthenticationService,
-      private loadingService: LoadingService,
-      private businessLogicService: BusinessLogicService,
-      private fileStorageService: FileStorageService,
-      private informationService: InformationService,
-      private productService: ProductService
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private authenticationService: AuthenticationService,
+    private loadingService: LoadingService,
+    private businessLogicService: BusinessLogicService,
+    private fileStorageService: FileStorageService,
+    private informationService: InformationService,
+    private productService: ProductService
   ) {
-    this.authenticationService.currentUser.subscribe( currentUser => {
+    this.authenticationService.currentUser.subscribe((currentUser) => {
       this.currentUser = currentUser;
-    } );
+    });
 
-    this.businessLogicService.userInfo.subscribe( userInfo => {
+    this.businessLogicService.userInfo.subscribe((userInfo) => {
       this.userInfo = userInfo;
-    } );
+    });
 
+    this.loadingService.sharedLoading.subscribe(
+      (loading) => (this.loading = loading)
+    );
 
-    this.loadingService.sharedLoading.subscribe( loading => this.loading = loading );
-
-    this.businessLogicService.me()
-    .subscribe( userInfo => {
+    this.businessLogicService.me().subscribe((userInfo) => {
       this.userInfo = userInfo;
-      if ( !this.userInfo.payload ) {
-        this.businessLogicService.createMyInfo()
-        .subscribe( () => {
-          this.router.navigate( [ URLS.settings.editProfile ] );
-        } );
+      if (!this.userInfo.payload) {
+        this.businessLogicService.createMyInfo().subscribe(() => {
+          this.router.navigate([URLS.settings.editProfile]);
+        });
       } else {
-
-        if ( this.userInfo?.payload?.profileImageId ) {
-          this.fileStorageService.downloadProfileImage( this.userInfo.payload.profileImageId ).subscribe();
+        if (this.userInfo?.payload?.profileImageId) {
+          this.fileStorageService
+            .downloadProfileImage(this.userInfo.payload.profileImageId)
+            .subscribe();
         }
       }
-    } );
+    });
 
-    this.fileStorageService.sharedProfileImage.subscribe( profileImg => {
-      if ( profileImg?.file?.data ) {
+    this.fileStorageService.sharedProfileImage.subscribe((profileImg) => {
+      if (profileImg?.file?.url) {
+        this.profileImg = profileImg.file.url;
+      } else if (profileImg?.file?.data) {
         this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
       }
-    } );
+    });
   }
 
   ngOnInit() {
@@ -80,9 +81,9 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   }
 
   initForm() {
-    this.form = this.formBuilder.group( {
-      message: [ '', Validators.required ]
-    } );
+    this.form = this.formBuilder.group({
+      message: ['', Validators.required],
+    });
   }
 
   ngOnDestroy() {
