@@ -7,7 +7,8 @@
   <div class="left-item-wrapper">
   </div>
   <div class="right-item-wrapper">
-    <a *ngIf="!currentUser" [href]="environmentCommon.website.github.url + '/' + environmentCommon.company.social.github"
+    <a *ngIf="!currentUser"
+       [href]="environmentCommon.website.github.url + '/' + environmentCommon.company.social.github"
        [target]="'_blank'">
       <i [class]="'fab fa-github fa-fw'" aria-hidden="true"></i>
       <span> GitHub </span>
@@ -35,27 +36,27 @@
     </a>
 
     <a (click)="dropdownMenuProducts.toggleDropdown();"
-    (mouseenter)="dropdownMenuProducts.openDropdown();"
-    *ngIf="currentUser">
+       (mouseenter)="dropdownMenuProducts.openDropdown();"
+       *ngIf="currentUser">
       <i [class]="'fas fa-file-pen fa-fw management'" aria-hidden="true"></i>
       <app-dropdown-menu
           #dropdownMenuProducts
+          [carrotLeftSpace]="'98px'"
           [dropdownParent]="dropdownMenuParent"
-          [items]="management"
-          [carrotLeftSpace]="'98px'">
+          [items]="management">
         <span>Management</span>
       </app-dropdown-menu>
     </a>
 
     <a (click)="dropdownMenuProducts.toggleDropdown();"
-    (mouseenter)="dropdownMenuProducts.openDropdown();"
-    *ngIf="currentUser">
+       (mouseenter)="dropdownMenuProducts.openDropdown();"
+       *ngIf="currentUser">
       <i [class]="'fas fa-cog fa-fw settings'" aria-hidden="true"></i>
       <app-dropdown-menu
           #dropdownMenuProducts
+          [carrotLeftSpace]="'85px'"
           [dropdownParent]="dropdownMenuParent"
-          [items]="settings"
-          [carrotLeftSpace]="'85px'">
+          [items]="settings">
         <span i18n="@@landingLayoutTopNav.settings">Settings</span>
       </app-dropdown-menu>
     </a>

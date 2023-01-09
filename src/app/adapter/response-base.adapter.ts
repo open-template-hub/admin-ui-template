@@ -1,3 +1,3 @@
 export interface ResponseBaseAdapter<T> {
-    adapt(item: any): T;
-  }
+  adapt( item: any ): T;
+}

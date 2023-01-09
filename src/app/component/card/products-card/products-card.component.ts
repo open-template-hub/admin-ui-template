@@ -3,45 +3,45 @@ import { Router } from '@angular/router';
 import { URLS } from 'src/app/data/navigation/navigation.data';
 import { ProductService } from 'src/app/service/product/product.service';
 
-@Component({
+@Component( {
   selector: 'app-products-card',
   templateUrl: './products-card.component.html',
-  styleUrls: ['./products-card.component.scss']
-})
+  styleUrls: [ './products-card.component.scss' ]
+} )
 export class ProductsCardComponent implements OnInit {
-  URLS = URLS
+  URLS = URLS;
 
   products: any;
   meta: any;
 
-  hasNextPage: boolean
-  hasPreviousPage: boolean
-  currentPageCount = 1
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+  currentPageCount = 1;
 
   filteredName;
 
   constructor(
-    private productService: ProductService,
-    private router: Router
+      private productService: ProductService,
+      private router: Router
   ) {
   }
 
   ngOnInit(): void {
-    this.fetchProducts()
+    this.fetchProducts();
   }
 
-  fetchProducts(offset?: number, callback?: ( _: void ) => void) {
-    this.productService.getAllProducts(this.filteredName, offset).subscribe( response => {
-      console.log("product Response ", response);
+  fetchProducts( offset?: number, callback?: ( _: void ) => void ) {
+    this.productService.getAllProducts( this.filteredName, offset ).subscribe( response => {
+      console.log( 'product Response ', response );
       this.products = response.products;
       this.meta = response.meta;
 
-      if(callback) {
-        callback()
+      if ( callback ) {
+        callback();
       }
 
-      this.setShouldShowNextAndPrevious()
-    })
+      this.setShouldShowNextAndPrevious();
+    } );
   }
 
   goToNextPage() {
@@ -49,7 +49,7 @@ export class ProductsCardComponent implements OnInit {
       return;
     }
 
-    this.fetchProducts(this.meta.offset + this.meta.limit, () => {
+    this.fetchProducts( this.meta.offset + this.meta.limit, () => {
       this.currentPageCount += 1;
     } );
   }
@@ -59,7 +59,7 @@ export class ProductsCardComponent implements OnInit {
       return;
     }
 
-    this.fetchProducts(this.meta.offset - this.meta.limit, () => {
+    this.fetchProducts( this.meta.offset - this.meta.limit, () => {
       this.currentPageCount -= 1;
     } );
   }
@@ -69,29 +69,29 @@ export class ProductsCardComponent implements OnInit {
     this.hasPreviousPage = this.meta.offset - this.meta.limit >= 0;
   }
 
-  searchWithUsernameKeyup(event: any) {
+  searchWithUsernameKeyup( event: any ) {
     const username = event.target.value;
 
-    if(username.length < 3) {
-      if(this.filteredName) {
+    if ( username.length < 3 ) {
+      if ( this.filteredName ) {
         this.filteredName = undefined;
 
-        this.fetchProducts(undefined, () => {
+        this.fetchProducts( undefined, () => {
           this.currentPageCount = 1;
-        })
+        } );
       }
-      return
+      return;
     }
 
-    this.filteredName = username
+    this.filteredName = username;
 
-    this.fetchProducts(undefined, () => {
+    this.fetchProducts( undefined, () => {
       this.currentPageCount = 1;
-    })
+    } );
   }
 
-  editProductTapped(id: string) {
-    console.log(URLS.settings.editProduct + '/' + id);
+  editProductTapped( id: string ) {
+    console.log( URLS.settings.editProduct + '/' + id );
     this.router.navigate( [ URLS.settings.editProduct + '/' + id ] );
   }
 

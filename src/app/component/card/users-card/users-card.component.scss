@@ -57,7 +57,7 @@ i {
           color: var(--color);
           padding-right: 7px;
         }
-        
+
         display: flex;
         align-items: center;
         padding-left: 25px;
@@ -136,32 +136,32 @@ i {
           display: flex;
           align-items: center;
           padding-bottom: 8px;
-  
+
           &.with-icon {
             padding-left: 2px;
-  
+
             & i {
               padding-left: 5px;
             }
-  
+
             & p {
               padding-left: 8px;
             }
           }
-  
+
           & img {
             width: 40px;
             height: 40px;
             margin-top: auto;
             margin-bottom: auto;
           }
-    
+
           & .column {
             @include util.flex-layout-column;
             margin-left: 5px;
             margin-right: auto;
             padding: 0 10px;
-    
+
             p {
               color: var(--lighter);
               font-weight: 300;
@@ -169,7 +169,7 @@ i {
               text-overflow: ellipsis;
               overflow: auto;
             }
-    
+
             & .date {
               font-size: 15px;
             }
@@ -253,7 +253,7 @@ i {
         & .category-filter-wrapper {
           & select {
             padding-left: 6px;
-          }          
+          }
         }
       }
     }
@@ -269,7 +269,7 @@ i {
         & .row-info {
           & img {
             width: 30px;
-            height: 30px; 
+            height: 30px;
           }
 
           & .field-wrapper.with-icon, p {

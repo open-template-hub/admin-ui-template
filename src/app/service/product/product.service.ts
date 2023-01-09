@@ -15,9 +15,8 @@ export class ProductService {
   URLS = URLS;
 
   public product: Observable<Product>;
-  private productSubject: BehaviorSubject<Product>;
-
   public premiumProduct: Observable<Product>;
+  private productSubject: BehaviorSubject<Product>;
   private premiumProductSubject: BehaviorSubject<Product>;
 
   private productStorageKey = 'product';

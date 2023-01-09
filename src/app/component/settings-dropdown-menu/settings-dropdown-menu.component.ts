@@ -15,7 +15,7 @@ export class SettingsDropdownMenuComponent {
   @Input() isDropdownOpen = false;
   @Input() dropdownParent: ElementRef = null;
   @Input() items: any[] = [];
-  @Input() carrotLeftSpace = "0px";
+  @Input() carrotLeftSpace = '0px';
 
   @ViewChild( 'toggleButton' ) toggleButton: ElementRef;
   @ViewChild( 'dropdownContent' ) dropdownContent: ElementRef;

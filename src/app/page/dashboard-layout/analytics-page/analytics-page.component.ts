@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-@Component({
+@Component( {
   selector: 'app-analytics-page',
   templateUrl: './analytics-page.component.html',
-  styleUrls: ['./analytics-page.component.scss']
-})
+  styleUrls: [ './analytics-page.component.scss' ]
+} )
 export class AnalyticsPageComponent {
   // Intentionally blank
 }
