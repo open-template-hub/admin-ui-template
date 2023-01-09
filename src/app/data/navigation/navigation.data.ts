@@ -516,7 +516,7 @@ export const URLS = {
     editTheme: '/' + NAVIGATIONS.settings.url + '/' + NAVIGATIONS.editTheme.url,
     editProfile: '/' + NAVIGATIONS.settings.url + '/' + NAVIGATIONS.editProfile.url,
     editOtherProfile: '/' + NAVIGATIONS.settings.url + '/' + NAVIGATIONS.editOtherProfile.url,
-    editProduct: '/' + NAVIGATIONS.settings.url + '/' + NAVIGATIONS.editProduct.url, 
+    editProduct: '/' + NAVIGATIONS.settings.url + '/' + NAVIGATIONS.editProduct.url,
     editSecurity: '/' + NAVIGATIONS.settings.url + '/' + NAVIGATIONS.editSecurity.url
   },
 

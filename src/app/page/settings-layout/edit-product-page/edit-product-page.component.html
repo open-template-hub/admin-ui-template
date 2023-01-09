@@ -1,29 +1,29 @@
 <div class="edit-product-page">
-    <h2>Edit Product</h2>
-    <oth-card
-        [bodyTemplate]="bodyTemplate"
-        class="edit-product-card">
+  <h2>Edit Product</h2>
+  <oth-card
+      [bodyTemplate]="bodyTemplate"
+      class="edit-product-card">
 
-      <!-- Body -->
-      <ng-template #bodyTemplate>
-        <form (ngSubmit)="onSubmit()" [formGroup]="productInfoForm" class="body" *ngIf="productInfo">
-          <div class="section">
-            <!-- primary info fields -->
-            <div [class.input-error]="submitted && f.name.invalid" class="input-with-icon">
-              <input formControlName="name" placeholder="Product name..." required type="text">
-              <i aria-hidden="true" class="fas fa-user fa-lg fa-fw"></i>
-            </div>
-            <div [class.input-error]="submitted && f.description.invalid" class="input-with-icon">
-              <input formControlName="description" placeholder="Product description..." required type="text">
-              <i aria-hidden="true" class="fas fa-user fa-lg fa-fw"></i>
-            </div>
-            <div class="section-submit">
-              <oth-button [icon]="'check'" text="Done">
-              </oth-button>
-            </div>
+    <!-- Body -->
+    <ng-template #bodyTemplate>
+      <form (ngSubmit)="onSubmit()" *ngIf="productInfo" [formGroup]="productInfoForm" class="body">
+        <div class="section">
+          <!-- primary info fields -->
+          <div [class.input-error]="submitted && f.name.invalid" class="input-with-icon">
+            <input formControlName="name" placeholder="Product name..." required type="text">
+            <i aria-hidden="true" class="fas fa-user fa-lg fa-fw"></i>
           </div>
-        </form>
-      </ng-template>
-    </oth-card>
-  </div>
+          <div [class.input-error]="submitted && f.description.invalid" class="input-with-icon">
+            <input formControlName="description" placeholder="Product description..." required type="text">
+            <i aria-hidden="true" class="fas fa-user fa-lg fa-fw"></i>
+          </div>
+          <div class="section-submit">
+            <oth-button [icon]="'check'" text="Done">
+            </oth-button>
+          </div>
+        </div>
+      </form>
+    </ng-template>
+  </oth-card>
+</div>
   

@@ -29,14 +29,14 @@
             <p *ngIf="product.description" class="email">{{ product.description }}</p>
           </div>
           <ng-container *ngIf="product.payload?.stripe">
-            <div class="field-wrapper with-icon" *ngIf="product.payload?.stripe">
-              <i style="font-size: 35px;" aria-hidden="true" class="fa-brands fa-stripe"></i>
+            <div *ngIf="product.payload?.stripe" class="field-wrapper with-icon">
+              <i aria-hidden="true" class="fa-brands fa-stripe" style="font-size: 35px;"></i>
               <p class="stripe-payload">{{ product.payload.stripe.external_product_id }}</p>
             </div>
             <div class="field-wrapper with-icon">
-              <i style="font-size: 15px; margin-left: 20px;" aria-hidden="true" class="fa-solid fa-dollar-sign"></i>
-              <p style="padding-left: 3px;"
-                 class="stripe-payload">{{ product.payload.stripe.amount }} {{ product.payload.stripe.currency }}</p>
+              <i aria-hidden="true" class="fa-solid fa-dollar-sign" style="font-size: 15px; margin-left: 20px;"></i>
+              <p class="stripe-payload"
+                 style="padding-left: 3px;">{{ product.payload.stripe.amount }} {{ product.payload.stripe.currency }}</p>
             </div>
           </ng-container>
         </div>
@@ -49,7 +49,7 @@
     </div>
   </ng-template>
   <ng-template #footerTemplate>
-    <div class="footer" *ngIf="meta">
+    <div *ngIf="meta" class="footer">
       <div>
         {{ products.length + meta.offset }} / {{ meta.count }}
       </div>

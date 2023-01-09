@@ -16,7 +16,7 @@
 
     <!-- Body -->
     <ng-template #bodyTemplate>
-      <form (ngSubmit)="onSubmit()" [formGroup]="userInfoForm" class="body" *ngIf="userInfo">
+      <form (ngSubmit)="onSubmit()" *ngIf="userInfo" [formGroup]="userInfoForm" class="body">
         <div class="section">
           <!-- primary info fields -->
           <div [class.input-error]="submitted && f.firstName.invalid" class="input-with-icon">

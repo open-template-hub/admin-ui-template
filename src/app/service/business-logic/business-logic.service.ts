@@ -56,8 +56,8 @@ export class BusinessLogicService {
     } ) );
   }
 
-  getOtherUser(username: string) {
-    return this.http.get<any>( `${ environment.serverUrl }/user/other?username=${username}`);
+  getOtherUser( username: string ) {
+    return this.http.get<any>( `${ environment.serverUrl }/user/other?username=${ username }` );
   }
 
   getUser( username: string ) {
@@ -80,8 +80,8 @@ export class BusinessLogicService {
     return this.http.put<any>( `${ environment.serverUrl }/user/me`, { payload } );
   }
 
-  updateOtherInfo(payload: any) {
-    return this.http.put<any>(`${ environment.serverUrl }/user/other`, payload);
+  updateOtherInfo( payload: any ) {
+    return this.http.put<any>( `${ environment.serverUrl }/user/other`, payload );
   }
 
   logout() {
