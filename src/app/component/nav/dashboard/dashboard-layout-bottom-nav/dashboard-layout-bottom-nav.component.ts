@@ -9,11 +9,11 @@ import { FileStorageService } from '../../../../service/file-storage/file-storag
 import { LoadingService } from '../../../../service/loading/loading.service';
 import { NotificationService } from '../../../../service/notification/notification.service';
 
-@Component({
+@Component( {
   selector: 'app-dashboard-layout-bottom-nav',
   templateUrl: './dashboard-layout-bottom-nav.component.html',
-  styleUrls: ['./dashboard-layout-bottom-nav.component.scss'],
-})
+  styleUrls: [ './dashboard-layout-bottom-nav.component.scss' ],
+} )
 export class DashboardLayoutBottomNavComponent {
   currentUser: AuthToken;
   userInfo: any = {};
@@ -26,54 +26,54 @@ export class DashboardLayoutBottomNavComponent {
 
   URLS = URLS;
 
-  @ViewChild('dropdownMenuProducts') dropdownMenuProducts: ElementRef;
-  @ViewChild('dropdownMenuServices') dropdownMenuServices: ElementRef;
+  @ViewChild( 'dropdownMenuProducts' ) dropdownMenuProducts: ElementRef;
+  @ViewChild( 'dropdownMenuServices' ) dropdownMenuServices: ElementRef;
 
   constructor(
-    private router: Router,
-    private authenticationService: AuthenticationService,
-    private loadingService: LoadingService,
-    private businessLogicService: BusinessLogicService,
-    private fileStorageService: FileStorageService,
-    private notificationService: NotificationService
+      private router: Router,
+      private authenticationService: AuthenticationService,
+      private loadingService: LoadingService,
+      private businessLogicService: BusinessLogicService,
+      private fileStorageService: FileStorageService,
+      private notificationService: NotificationService
   ) {
-    this.authenticationService.currentUser.subscribe((currentUser) => {
+    this.authenticationService.currentUser.subscribe( ( currentUser ) => {
       this.currentUser = currentUser;
-    });
+    } );
 
     this.loadingService.sharedLoading.subscribe(
-      (loading) => (this.loading = loading)
+        ( loading ) => ( this.loading = loading )
     );
 
-    this.businessLogicService.userInfo.subscribe((userInfo) => {
-      if (userInfo) {
+    this.businessLogicService.userInfo.subscribe( ( userInfo ) => {
+      if ( userInfo ) {
         this.userInfo = userInfo;
       }
 
-      if (this.userInfo.profileImg) {
+      if ( this.userInfo.profileImg ) {
         this.profileImg = userInfo.profileImg;
       }
-    });
+    } );
 
-    this.fileStorageService.sharedProfileImage.subscribe((profileImg) => {
-      if (profileImg?.file?.url) {
+    this.fileStorageService.sharedProfileImage.subscribe( ( profileImg ) => {
+      if ( profileImg?.file?.url ) {
         this.profileImg = profileImg.file.url;
-      } else if (profileImg?.file?.data) {
+      } else if ( profileImg?.file?.data ) {
         this.profileImg = 'data:image/png;base64,' + profileImg.file.data;
       }
-    });
+    } );
 
-    this.notificationService.notifications.subscribe((notifications) => {
+    this.notificationService.notifications.subscribe( ( notifications ) => {
       this.notifications = notifications.filter(
-        (notification) => !notification.read
+          ( notification ) => !notification.read
       );
-    });
+    } );
   }
 
   logout() {
     this.authenticationService.logout();
-    this.router.navigate(['/']).then(() => {
+    this.router.navigate( [ '/' ] ).then( () => {
       return true;
-    });
+    } );
   }
 }

@@ -3,21 +3,21 @@ import { Router } from '@angular/router';
 import { URLS } from 'src/app/data/navigation/navigation.data';
 import { AnalyticsService } from 'src/app/service/analytics/analytics.service';
 
-@Component({
+@Component( {
   selector: 'app-analytics-card',
   templateUrl: './analytics-card.component.html',
-  styleUrls: ['./analytics-card.component.scss']
-})
+  styleUrls: [ './analytics-card.component.scss' ]
+} )
 export class AnalyticsCardComponent implements OnInit {
 
-  URLS = URLS
+  URLS = URLS;
 
   analytics: any;
   meta: any;
 
-  hasNextPage: boolean
-  hasPreviousPage: boolean
-  currentPageCount = 1
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+  currentPageCount = 1;
 
   filteredName;
   selectedCategory: any;
@@ -30,11 +30,11 @@ export class AnalyticsCardComponent implements OnInit {
   currentDate = new Date();
 
   constructor(
-    private router: Router,
-    private analyticsService: AnalyticsService
+      private router: Router,
+      private analyticsService: AnalyticsService
   ) {
     const startDate = new Date();
-    startDate.setDate(startDate.getDate() - 7);
+    startDate.setDate( startDate.getDate() - 7 );
 
     this.selectedStartDate = startDate;
     this.selectedEndDate = new Date();
@@ -43,35 +43,35 @@ export class AnalyticsCardComponent implements OnInit {
   ngOnInit(): void {
     this.analyticsService.getCategories().subscribe( response => {
       this.categories = response;
-      this.mappedCategories = this.analyticsService.convertCategoriesToMappedObject(response);
+      this.mappedCategories = this.analyticsService.convertCategoriesToMappedObject( response );
 
-      if(response.length > 0) {
-        this.selectedCategory = response[0];
+      if ( response.length > 0 ) {
+        this.selectedCategory = response[ 0 ];
       }
 
-      this.fetchAnalytics()
-    })
+      this.fetchAnalytics();
+    } );
 
   }
 
-  fetchAnalytics(offset?: number, callback?: ( _: void ) => void) {
+  fetchAnalytics( offset?: number, callback?: ( _: void ) => void ) {
     this.analyticsService.getAllEvents(
-      this.filteredName,
-      this.selectedCategory.key,
-      this.selectedStartDate?.getTime(),
-      this.selectedEndDate?.getTime(),
-      offset
+        this.filteredName,
+        this.selectedCategory.key,
+        this.selectedStartDate?.getTime(),
+        this.selectedEndDate?.getTime(),
+        offset
     ).subscribe( response => {
-      console.log("analytics Response ", response);
+      console.log( 'analytics Response ', response );
       this.analytics = response.data;
       this.meta = response.meta;
 
-      if(callback) {
-        callback()
+      if ( callback ) {
+        callback();
       }
 
-      this.setShouldShowNextAndPrevious()
-    })
+      this.setShouldShowNextAndPrevious();
+    } );
   }
 
   goToNextPage() {
@@ -79,7 +79,7 @@ export class AnalyticsCardComponent implements OnInit {
       return;
     }
 
-    this.fetchAnalytics(this.meta.skip + this.meta.limit, () => {
+    this.fetchAnalytics( this.meta.skip + this.meta.limit, () => {
       this.currentPageCount += 1;
     } );
   }
@@ -89,7 +89,7 @@ export class AnalyticsCardComponent implements OnInit {
       return;
     }
 
-    this.fetchAnalytics(this.meta.skip - this.meta.limit, () => {
+    this.fetchAnalytics( this.meta.skip - this.meta.limit, () => {
       this.currentPageCount -= 1;
     } );
   }
@@ -99,25 +99,25 @@ export class AnalyticsCardComponent implements OnInit {
     this.hasPreviousPage = this.meta.skip - this.meta.limit >= 0;
   }
 
-  searchWithUsernameKeyup(event: any) {
+  searchWithUsernameKeyup( event: any ) {
     const username = event.target.value;
 
-    if(username.length < 3) {
-      if(this.filteredName) {
+    if ( username.length < 3 ) {
+      if ( this.filteredName ) {
         this.filteredName = undefined;
 
-        this.fetchAnalytics(undefined, () => {
+        this.fetchAnalytics( undefined, () => {
           this.currentPageCount = 1;
-        })
+        } );
       }
-      return
+      return;
     }
 
-    this.filteredName = username
+    this.filteredName = username;
 
-    this.fetchAnalytics(undefined, () => {
+    this.fetchAnalytics( undefined, () => {
       this.currentPageCount = 1;
-    })
+    } );
   }
 
   changeCategory( event: any ): void {
@@ -144,8 +144,8 @@ export class AnalyticsCardComponent implements OnInit {
     } );
   }
 
-  editProductTapped(id: string) {
-    console.log(URLS.settings.editProduct + '/' + id);
+  editProductTapped( id: string ) {
+    console.log( URLS.settings.editProduct + '/' + id );
     this.router.navigate( [ URLS.settings.editProduct + '/' + id ] );
   }
 

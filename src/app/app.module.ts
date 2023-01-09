@@ -20,8 +20,10 @@ import { SwiperModule } from 'swiper/angular';
 import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { ActivityCardComponent } from './component/card/activity-card/activity-card.component';
 import { ActivityHistoryCardComponent } from './component/card/activity-history-card/activity-history-card.component';
+import { AnalyticsCardComponent } from './component/card/analytics-card/analytics-card.component';
 import { AnalyticsEventCardComponent } from './component/card/analytics-event-card/analytics-event-card.component';
 import { AssetCardComponent } from './component/card/asset-card/asset-card.component';
 import { BlogCardComponent } from './component/card/blog-card/blog-card.component';
@@ -35,6 +37,7 @@ import { EmployeeCardComponent } from './component/card/employee-card/employee-c
 import { FeatureCardComponent } from './component/card/feature-card/feature-card.component';
 import { PolicyCardComponent } from './component/card/policy-card/policy-card.component';
 import { PresentationCardComponent } from './component/card/presentation-card/presentation-card.component';
+import { ProductsCardComponent } from './component/card/products-card/products-card.component';
 import { ProfileCardComponent } from './component/card/profile-card/profile-card.component';
 import { StatusCardComponent } from './component/card/status-card/status-card.component';
 import { TechStackCardComponent } from './component/card/tech-stack-card/tech-stack-card.component';
@@ -43,6 +46,7 @@ import {
   StepTimelineCardComponent
 } from './component/card/timeline-card/step-timeline-card/step-timeline-card.component';
 import { TimelineCardComponent } from './component/card/timeline-card/timeline-card.component';
+import { UsersCardComponent } from './component/card/users-card/users-card.component';
 import { ColorChartComponent } from './component/color-chart/color-chart.component';
 import { BoxContentLoaderComponent } from './component/content-loader/box-content-loader/box-content-loader.component';
 import { ContentLoaderComponent } from './component/content-loader/content-loader.component';
@@ -85,11 +89,14 @@ import { PresentationSwiperComponent } from './component/swiper/presentation-swi
 import { ScreenshotSwiperComponent } from './component/swiper/screenshot-swiper/screenshot-swiper.component';
 import { RequestInterceptor } from './interceptor/request/request.interceptor';
 import { ResponseInterceptor } from './interceptor/response/response.interceptor';
-import { AppComponent } from './app.component';
+import { AnalyticsPageComponent } from './page/dashboard-layout/analytics-page/analytics-page.component';
 import { DashboardLayoutComponent } from './page/dashboard-layout/dashboard-layout.component';
 
 import { DashboardPageComponent } from './page/dashboard-layout/dashboard-page/dashboard-page.component';
+import { MyProfilePageComponent } from './page/dashboard-layout/my-profile-page/my-profile-page.component';
 import { NotificationsPageComponent } from './page/dashboard-layout/notifications-page/notifications-page.component';
+import { ProductsPageComponent } from './page/dashboard-layout/products-page/products.component';
+import { UsersPageComponent } from './page/dashboard-layout/users-page/users-page.component';
 import { AboutUsPageComponent } from './page/landing-layout/about-us-page/about-us-page.component';
 import {
   BlogContentPageComponent
@@ -135,6 +142,10 @@ import {
 } from './page/landing-layout/raw-content-pages/verify-account-page/verify-account-page.component';
 import { SitemapPageComponent } from './page/landing-layout/sitemap-page/sitemap-page.component';
 import { StatusPageComponent } from './page/landing-layout/status-page/status-page.component';
+import {
+  EditOtherProfilePageComponent
+} from './page/settings-layout/edit-other-profile-page/edit-other-profile-page.component';
+import { EditProductPageComponent } from './page/settings-layout/edit-product-page/edit-product-page.component';
 import { EditSecurityComponent } from './page/settings-layout/edit-security/edit-security.component';
 import { EditThemePageComponent } from './page/settings-layout/edit-theme-page/edit-theme-page.component';
 import { SettingsLayoutComponent } from './page/settings-layout/settings-layout.component';
@@ -142,17 +153,6 @@ import {
   ExternalRedirectPageComponent
 } from './page/splash-layout/external-redirect-page/external-redirect-page.component';
 import { SplashLayoutComponent } from './page/splash-layout/splash-layout.component';
-import { UsersCardComponent } from './component/card/users-card/users-card.component';
-import { UsersPageComponent } from './page/dashboard-layout/users-page/users-page.component';
-import {
-  EditOtherProfilePageComponent
-} from './page/settings-layout/edit-other-profile-page/edit-other-profile-page.component';
-import { ProductsPageComponent } from './page/dashboard-layout/products-page/products.component';
-import { ProductsCardComponent } from './component/card/products-card/products-card.component';
-import { EditProductPageComponent } from './page/settings-layout/edit-product-page/edit-product-page.component';
-import { AnalyticsPageComponent } from './page/dashboard-layout/analytics-page/analytics-page.component';
-import { AnalyticsCardComponent } from './component/card/analytics-card/analytics-card.component';
-import { MyProfilePageComponent } from './page/dashboard-layout/my-profile-page/my-profile-page.component';
 
 @NgModule( {
   declarations: [
